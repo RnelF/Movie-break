@@ -11,12 +11,16 @@ export default function Nav() {
               type="text"
               placeholder="Search"
             />
-            <button className="border border-slate-500 rounded-md p-2">
+            <button className="border border-slate-500 rounded-sm p-2">
               🔍
             </button>
           </li>
-          <li className="mr-4 p-2 cursor-pointer">Contact</li>
-          <li className="mr-4 p-2 cursor-pointer">About</li>
+          <li className="mr-4 p-2 font-semibold cursor-pointer hover:text-slate-700">
+            Contact
+          </li>
+          <li className="mr-4 p-2 font-semibold cursor-pointer hover:text-slate-700">
+            About
+          </li>
         </ul>
       </div>
     </div>
