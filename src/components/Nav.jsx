@@ -11,14 +11,14 @@ export default function Nav() {
               type="text"
               placeholder="Search"
             />
-            <button className="border border-slate-500 rounded-sm p-2">
+            <button className="border border-slate-500 rounded-sm p-2 hover:bg-slate-700 duration-300">
               🔍
             </button>
           </li>
-          <li className="mr-4 p-2 font-semibold cursor-pointer hover:text-slate-700">
+          <li className="mr-4 p-2 font-semibold cursor-pointer hover:text-slate-700 duration-200">
             Contact
           </li>
-          <li className="mr-4 p-2 font-semibold cursor-pointer hover:text-slate-700">
+          <li className="mr-4 p-2 font-semibold cursor-pointer hover:text-slate-700 duration-200">
             About
           </li>
         </ul>
