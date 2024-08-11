@@ -19,7 +19,7 @@ export default function MovieDetails({ movieId }) {
   }, [movieId]);
   return (
     <div className="text-nowrap text-white">
-      <div className="m-14 w-3/5 flex bg-gray-800 pt-4 pl-4 pb-4 rounded-lg">
+      <div className="m-14 w-auto flex bg-gray-800 pt-4 pl-4 pb-4 rounded-lg">
         <img
           className="w-80 rounded-sm border border-slate-300"
           src={`${IMAGE_BASE_URL}${movie.poster_path}`}
