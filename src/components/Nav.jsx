@@ -1,6 +1,6 @@
 export default function Nav() {
   return (
-    <div className="shadow-xl flex justify-between">
+    <div className="shadow-xl flex justify-between text-nowrap">
       <div className=" text-5xl font-thin p-6">Movie Break 🎬</div>
 
       <div className="list-none mt-6 text-2xl items-center">

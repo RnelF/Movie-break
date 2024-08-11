@@ -18,10 +18,10 @@ export default function MovieDetails({ movieId }) {
     fetchMovie();
   }, [movieId]);
   return (
-    <div>
-      <div className="m-14 flex">
+    <div className="text-nowrap text-white">
+      <div className="m-14 w-3/5 flex bg-gray-800 pt-4 pl-4 pb-4 rounded-lg">
         <img
-          className="w-80 rounded-sm"
+          className="w-80 rounded-sm border border-slate-300"
           src={`${IMAGE_BASE_URL}${movie.poster_path}`}
           alt="img"
         />
@@ -29,11 +29,11 @@ export default function MovieDetails({ movieId }) {
         <div className="flex flex-col ml-8">
           <div>
             <h1 className="text-5xl">{movie.original_title}</h1>
-            <div className="mt-4 text-sm">
+            <div className="mt-4 text-sm flex">
               {isLoading ? (
                 <p>Loading . . . </p>
               ) : (
-                <ul className="list-none flex flex-row justify-start">
+                <ul className="list-none flex flex-row justify-start text-black">
                   {movie.genres.map((genre) => (
                     <li
                       className="bg-slate-300 rounded-lg pl-1 pr-1 mr-2"
@@ -44,6 +44,10 @@ export default function MovieDetails({ movieId }) {
                   ))}
                 </ul>
               )}
+              <div className="flex ">
+                <div className="mr-4">⏳ {movie.runtime} Minutes</div>
+                <div>📆 {movie.release_date}</div>
+              </div>
             </div>
             <div className="mt-2 text-sm">
               <p>
@@ -67,21 +71,30 @@ export default function MovieDetails({ movieId }) {
             </div>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-6 text-sm">
             {isLoading ? (
               <p>Loading...</p>
             ) : (
               movie.production_companies.map((company) => (
-                <div key={company.id}>
-                  {company.logo_path && (
-                    <img
-                      className="w-20"
-                      src={`${IMAGE_BASE_URL}${company.logo_path}`}
-                      alt={company.name}
-                    />
-                  )}
-                  <p>Company Name: {company.name}</p>
-                  <p>Origin Country: {company.origin_country}</p>
+                <div className="flex justify-around" key={company.id}>
+                  <div>
+                    <p>Budget: ${movie.budget.toLocaleString()}</p>
+                    <p>Revenue: ${movie.revenue.toLocaleString()}</p>
+                  </div>
+                  <div>
+                    <p>Origin Country: {company.origin_country}</p>
+                    <p>Company Name: {company.name}</p>
+                  </div>
+
+                  <div>
+                    {company.logo_path && (
+                      <img
+                        className="w-20"
+                        src={`${IMAGE_BASE_URL}${company.logo_path}`}
+                        alt={company.name}
+                      />
+                    )}
+                  </div>
                 </div>
               ))
             )}
