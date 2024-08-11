@@ -46,9 +46,11 @@ export default function MovieDetails({ movieId }) {
               )}
               <div className="flex ">
                 <div className="mr-4">⏳ {movie.runtime} Minutes</div>
-                <div>📆 {movie.release_date}</div>
+                <div className="mr-4">📆 {movie.release_date}</div>
+                <div>{movie.adult ? "🔞" : "✅PG"}</div>
               </div>
             </div>
+
             <div className="mt-2 text-sm">
               <p>
                 Popularity:{" "}
@@ -76,12 +78,12 @@ export default function MovieDetails({ movieId }) {
               <p>Loading...</p>
             ) : (
               movie.production_companies.map((company) => (
-                <div className="flex justify-around" key={company.id}>
-                  <div>
+                <div className="flex justify-items-start" key={company.id}>
+                  <div className="mr-5">
                     <p>Budget: ${movie.budget.toLocaleString()}</p>
                     <p>Revenue: ${movie.revenue.toLocaleString()}</p>
                   </div>
-                  <div>
+                  <div className="mr-5">
                     <p>Origin Country: {company.origin_country}</p>
                     <p>Company Name: {company.name}</p>
                   </div>
@@ -98,6 +100,11 @@ export default function MovieDetails({ movieId }) {
                 </div>
               ))
             )}
+          </div>
+
+          <div className="text-wrap mt-6 text-left text-sm w-11/12">
+            <p className="font-bold text-lg">Overview</p>
+            <p>{movie.overview}</p>
           </div>
         </div>
       </div>
