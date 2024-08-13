@@ -21,9 +21,9 @@ export default function Search({ setMovieData }) {
   }, []);
 
   return (
-    <div>
+    <div className="flex justify-center mt-6">
       <input
-        className="w-68 border border-b-slate-400 p-2"
+        className="w-2/4  border border-b-slate-400 p-2"
         type="text"
         placeholder="Search"
         value={query}
