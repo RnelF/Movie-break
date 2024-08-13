@@ -110,6 +110,7 @@ export default function MovieDetails({ movieId }) {
             <p className="font-bold text-lg">Overview</p>
             <p>{movie.overview}</p>
           </div>
+
           <div>
             <MovieStaffs movieId={movieId} />
           </div>

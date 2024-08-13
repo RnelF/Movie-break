@@ -27,8 +27,22 @@ export default function MovieStaffs({ movieId }) {
   }, [movieId]);
 
   return (
-    <div>
-      <h1 className="text-5xl text-black">{movieCrew.original_name}</h1>
+    <div className="mt-3">
+      {isLoading ? (
+        <p>Loading . . .</p>
+      ) : (
+        <div className="flex">
+          {" "}
+          <p className="mr-4 mt-1">Directed by:</p>
+          {movieCrew.map((crew) => (
+            <div className="mr-4">
+              <h1 className="text-2xl text-center" key={crew.id}>
+                {crew.name}
+              </h1>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
