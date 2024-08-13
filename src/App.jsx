@@ -11,7 +11,6 @@ function App() {
       <Nav movieId={movieId} setMovieId={setMovieId} />
       <Search movieData={movieData} setMovieData={setMovieData} />
       <MovieDetails movieId={movieId} />
-      {<MovieCasts movieId={movieId} />}
     </>
   );
 }

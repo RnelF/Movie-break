@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export default function MovieCasts({ movieId }) {
   const [castData, setCastData] = useState({ cast: [] });
   const [isLoading, setIsLoading] = useState(true);
+  const [showCasts, setShowCasts] = useState(false); // State to control when to show the cast
 
   const URL = `https://api.themoviedb.org/3/movie/${movieId}/credits`;
   const API_KEY = `5d4d812535feac9d594d1bdec7c43c81`;
@@ -16,31 +17,46 @@ export default function MovieCasts({ movieId }) {
       setCastData(data);
       setIsLoading(false);
     }
-    fetchCasts();
-  }, [movieId]);
+
+    if (showCasts) {
+      fetchCasts(); // Fetch data only if showCasts is true
+    }
+  }, [showCasts, movieId]); // Re-run when showCasts or movieId changes
+
   return (
     <div className="bg-gray-800 p-4">
-      {isLoading ? (
-        <p>Loading . . .</p>
-      ) : (
-        <div className="flex flex-col items-start gap-4">
-          {castData.cast.map((cast) => (
-            <div key={cast.id} className="flex flex-row items-center">
-              {/* Image Container */}
-              <div className="w-28 h-28 bg-gray-200 rounded-full overflow-hidden">
-                {cast.profile_path && (
-                  <img
-                    src={`${IMAGE_BASE_URL}${cast.profile_path}`}
-                    alt={cast.name}
-                    className="w-full h-full object-cover object-center"
-                  />
-                )}
-              </div>
-              {/* Name Container */}
-              <p className="mt-2 text-white text-center">{cast.name}</p>
-              <div></div>
+      <button
+        onClick={() => setShowCasts(!showCasts)} // Toggle the state when clicked
+        className="bg-blue-500 text-white p-2 rounded"
+      >
+        {showCasts ? "Hide Cast" : "View All Cast"}
+      </button>
+      {showCasts && (
+        <div>
+          {isLoading ? (
+            <p>Loading . . .</p>
+          ) : (
+            <div className="flex flex-col items-start gap-4 mt-4">
+              {castData.cast.map((cast) => (
+                <div key={cast.id} className="flex flex-row items-center">
+                  {/* Image Container */}
+                  <div className="w-28 h-28 bg-gray-200 rounded-full overflow-hidden">
+                    {cast.profile_path && (
+                      <img
+                        src={`${IMAGE_BASE_URL}${cast.profile_path}`}
+                        alt={cast.name}
+                        className="w-full h-full object-cover object-center"
+                      />
+                    )}
+                  </div>
+                  {/* Name Container */}
+                  <p className="mt-2 text-white text-center ml-4">
+                    {cast.name}
+                  </p>
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
       )}
     </div>

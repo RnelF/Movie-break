@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import MovieCasts from "./MovieCasts";
+import MovieStaffs from "./MovieStaffs";
 
 export default function MovieDetails({ movieId }) {
   const [movie, setMovie] = useState({});
@@ -20,11 +22,13 @@ export default function MovieDetails({ movieId }) {
   return (
     <div className="text-nowrap text-white">
       <div className="m-14 w-auto flex bg-gray-800 pt-4 pl-4 pb-4 rounded-lg">
-        <img
-          className="w-80 rounded-sm border border-slate-300"
-          src={`${IMAGE_BASE_URL}${movie.poster_path}`}
-          alt="img"
-        />
+        <div className="w-auto h-auto">
+          <img
+            className="w-custom-w h-auto rounded-sm border border-slate-300"
+            src={`${IMAGE_BASE_URL}${movie.poster_path}`}
+            alt="img"
+          />
+        </div>
 
         <div className="flex flex-col ml-8">
           <div>
@@ -105,6 +109,13 @@ export default function MovieDetails({ movieId }) {
           <div className="text-wrap mt-6 text-left text-sm w-11/12">
             <p className="font-bold text-lg">Overview</p>
             <p>{movie.overview}</p>
+          </div>
+          <div>
+            <MovieStaffs movieId={movieId} />
+          </div>
+
+          <div>
+            <MovieCasts movieId={movieId} />
           </div>
         </div>
       </div>
