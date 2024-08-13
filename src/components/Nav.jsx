@@ -1,3 +1,5 @@
+import Search from "./Search";
+
 export default function Nav() {
   return (
     <div className="shadow-xl flex justify-between text-nowrap">
@@ -6,14 +8,7 @@ export default function Nav() {
       <div className="list-none mt-6 text-2xl items-center">
         <ul className="flex flex-row">
           <li className="mr-4">
-            <input
-              className="w-68 border border-b-slate-400 p-2"
-              type="text"
-              placeholder="Search"
-            />
-            <button className="border border-slate-500 rounded-sm p-2 hover:bg-slate-700 duration-300">
-              🔍
-            </button>
+            <Search />
           </li>
           <li className="mr-4 p-2 font-semibold cursor-pointer hover:text-slate-700 duration-200">
             Contact

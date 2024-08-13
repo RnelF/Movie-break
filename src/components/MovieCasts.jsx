@@ -19,15 +19,15 @@ export default function MovieCasts({ movieId }) {
     fetchCasts();
   }, [movieId]);
   return (
-    <div className="bg-slate-600 p-4">
+    <div className="bg-gray-800 p-4">
       {isLoading ? (
         <p>Loading . . .</p>
       ) : (
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-col items-start gap-4">
           {castData.cast.map((cast) => (
-            <div key={cast.id} className="flex flex-col items-center">
+            <div key={cast.id} className="flex flex-row items-center">
               {/* Image Container */}
-              <div className="w-20 h-20 bg-gray-200 rounded-full overflow-hidden">
+              <div className="w-28 h-28 bg-gray-200 rounded-full overflow-hidden">
                 {cast.profile_path && (
                   <img
                     src={`${IMAGE_BASE_URL}${cast.profile_path}`}
@@ -38,6 +38,7 @@ export default function MovieCasts({ movieId }) {
               </div>
               {/* Name Container */}
               <p className="mt-2 text-white text-center">{cast.name}</p>
+              <div></div>
             </div>
           ))}
         </div>

@@ -7,7 +7,7 @@ function App() {
   const [movieId, setMovieId] = useState("299536");
   return (
     <>
-      <Nav />
+      <Nav movieId={movieId} setMovieId={setMovieId} />
       <MovieDetails movieId={movieId} />
       <MovieCasts movieId={movieId} />
     </>
