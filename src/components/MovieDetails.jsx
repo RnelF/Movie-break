@@ -20,11 +20,11 @@ export default function MovieDetails({ movieId }) {
     fetchMovie();
   }, [movieId]);
   return (
-    <div className="text-nowrap text-white">
-      <div className="m-14 w-auto flex bg-gray-800 pt-4 pl-4 pb-4 rounded-lg">
-        <div className="w-auto h-auto">
+    <div className="text-nowrap text-white m-12">
+      <div className=" w-108 bg-gray-800 rounded-lg p-3">
+        <div className="w-48 h-68 mx-auto my-4">
           <img
-            className="w-custom-w h-auto rounded-sm border border-slate-300"
+            className="w-full h-full rounded-sm border border-slate-300 "
             src={`${IMAGE_BASE_URL}${movie.poster_path}`}
             alt="img"
           />
@@ -48,7 +48,7 @@ export default function MovieDetails({ movieId }) {
                   ))}
                 </ul>
               )}
-              <div className="flex ">
+              <div className="flex">
                 <div className="mr-4">⏳ {movie.runtime} Minutes</div>
                 <div className="mr-4">📆 {movie.release_date}</div>
                 <div>{movie.adult ? "🔞" : "✅PG"}</div>
@@ -82,7 +82,10 @@ export default function MovieDetails({ movieId }) {
               <p>Loading...</p>
             ) : (
               movie.production_companies.map((company) => (
-                <div className="flex justify-items-start" key={company.id}>
+                <div
+                  className="flex flex-col border border-white"
+                  key={company.id}
+                >
                   <div className="mr-5">
                     <p>Budget: ${movie.budget.toLocaleString()}</p>
                     <p>Revenue: ${movie.revenue.toLocaleString()}</p>

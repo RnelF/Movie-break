@@ -5,7 +5,7 @@ import MovieCasts from "./components/MovieCasts";
 import Search from "./components/Search";
 function App() {
   const [movieData, setMovieData] = useState([]);
-  const [movieId, setMovieId] = useState("299536");
+  const [movieId, setMovieId] = useState("299118");
   return (
     <>
       <Nav movieId={movieId} setMovieId={setMovieId} />

@@ -5,6 +5,12 @@ export default {
     extend: {
       width: {
         "custom-w": "1000px",
+        144: "576px",
+        100: "400px",
+        108: "490px",
+      },
+      height: {
+        144: "576px",
       },
     },
   },
