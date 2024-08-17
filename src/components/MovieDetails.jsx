@@ -20,9 +20,9 @@ export default function MovieDetails({ movieId }) {
     fetchMovie();
   }, [movieId]);
   return (
-    <div className="text-nowrap text-white m-12 w-auto">
-      <div className=" w-196 bg-gray-800 rounded-lg p-3">
-        <div className="w-48 h-68 mx-auto my-4">
+    <div className="mx-auto mt-4 text-nowrap text-white">
+      <div className=" w-90 bg-gray-800 rounded-lg p-2">
+        <div className="w-40 h-68 mx-auto pt-4">
           <img
             className="w-full h-full rounded-sm border border-slate-300 "
             src={`${IMAGE_BASE_URL}${movie.poster_path}`}
@@ -30,17 +30,17 @@ export default function MovieDetails({ movieId }) {
           />
         </div>
 
-        <div className="flex flex-col ml-8">
+        <div className="flex flex-col p-3">
           <div>
-            <h1 className="text-5xl">{movie.original_title}</h1>
-            <div className="mt-4 text-sm flex">
+            <h1 className="text-lg text-wrap">{movie.original_title}</h1>
+            <div className="mt-4 text-sm flex flex-col">
               {isLoading ? (
                 <p>Loading . . . </p>
               ) : (
-                <ul className="list-none flex flex-row justify-start text-black">
+                <ul className=" list-none flex flex-row justify-start text-black">
                   {movie.genres.map((genre) => (
                     <li
-                      className="bg-slate-300 rounded-lg pl-1 pr-1 mr-2"
+                      className="bg-slate-300 rounded-lg pl-1 pr-1 mr-2 text-sm"
                       key={genre.id}
                     >
                       {genre.name}
@@ -48,44 +48,41 @@ export default function MovieDetails({ movieId }) {
                   ))}
                 </ul>
               )}
-              <div className="flex">
+              <div className="flex flex-col mt-3 text-xs">
                 <div className="mr-4">⏳ {movie.runtime} Minutes</div>
                 <div className="mr-4">📆 {movie.release_date}</div>
                 <div>{movie.adult ? "🔞" : "✅PG"}</div>
               </div>
             </div>
 
-            <div className="mt-2 text-sm">
+            <div className="mt-2 text-xs">
               <p>
                 Popularity:{" "}
-                <span className=" ml-1 font-semibold text-lg">
+                <span className=" ml-1 font-semibold text-md">
                   🔥{movie.popularity}
                 </span>
               </p>
               <p className="mt-1">
-                Rating:
-                <span className=" ml-1 font-semibold text-lg">
+                TmDB Rating:
+                <span className=" ml-1 font-semibold text-md">
                   ⭐{movie.vote_average}
                 </span>
               </p>
               <p className="mt-1">
-                Votes:{" "}
-                <span className=" ml-1 font-semibold text-lg">
+                TmDB Votes:{" "}
+                <span className=" ml-1 font-semibold text-md">
                   👥{movie.vote_count}
                 </span>
               </p>
             </div>
           </div>
 
-          <div className="mt-6 text-sm">
+          <div className="mt-6 text-xs">
             {isLoading ? (
               <p>Loading...</p>
             ) : (
               movie.production_companies.map((company) => (
-                <div
-                  className="flex flex-col border border-white"
-                  key={company.id}
-                >
+                <div className="flex flex-col " key={company.id}>
                   <div className="mr-5">
                     <p>Budget: ${movie.budget.toLocaleString()}</p>
                     <p>Revenue: ${movie.revenue.toLocaleString()}</p>
@@ -95,10 +92,10 @@ export default function MovieDetails({ movieId }) {
                     <p>Company Name: {company.name}</p>
                   </div>
 
-                  <div>
+                  <div className="mt-3">
                     {company.logo_path && (
                       <img
-                        className="w-20"
+                        className="w-20 border border-slate-200 p-3"
                         src={`${IMAGE_BASE_URL}${company.logo_path}`}
                         alt={company.name}
                       />
@@ -109,7 +106,7 @@ export default function MovieDetails({ movieId }) {
             )}
           </div>
 
-          <div className="text-wrap mt-6 text-left text-sm w-11/12">
+          <div className="text-wrap mt-6 text-left text-xs w-11/12">
             <p className="font-bold text-lg">Overview</p>
             <p>{movie.overview}</p>
           </div>
