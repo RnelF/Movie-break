@@ -5,7 +5,7 @@ export default function MovieStaffs({ movieId }) {
   const [isLoading, setIsLoading] = useState(true);
 
   const URL = `https://api.themoviedb.org/3/movie/${movieId}/credits`;
-  const API_KEY = `5d4d812535feac9d594d1bdec7c43c81`;
+  const API_KEY = import.meta.env.REACT_APP_API_KEY;
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
   useEffect(() => {
