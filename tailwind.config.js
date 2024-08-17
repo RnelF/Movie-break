@@ -13,6 +13,9 @@ export default {
       height: {
         144: "576px",
       },
+      screens: {
+        iphoneXr: "414px",
+      },
     },
   },
   plugins: [],

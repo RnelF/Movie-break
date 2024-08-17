@@ -20,8 +20,8 @@ export default function MovieDetails({ movieId }) {
     fetchMovie();
   }, [movieId]);
   return (
-    <div className="mx-auto mt-4 text-nowrap text-white">
-      <div className=" w-90 bg-gray-800 rounded-lg p-2">
+    <div className=" mt-6 text-nowrap text-white">
+      <div className=" w-90 iphoneXr:mx-5 bg-gray-800 rounded-lg p-2">
         <div className="w-40 h-68 mx-auto pt-4">
           <img
             className="w-full h-full rounded-sm border border-slate-300 "
