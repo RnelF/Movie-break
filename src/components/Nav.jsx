@@ -20,13 +20,16 @@ export default function Nav() {
       <div
         className={`${
           isOpen ? "block" : "hidden"
-        } lg:flex flex-col lg:flex-row list-none mt-6 text-2xl items-center fixed inset-0 justify-center bg-white bg-opacity-90 lg:static lg:bg-transparent w-60 h-32 left-16 top-16`}
+        } lg:flex flex-col lg:flex-row list-none mt-6 text-2xl items-center fixed inset-0 justify-center bg-white bg-opacity-90 lg:static lg:bg-transparent w-60 h-48 left-16 top-16`}
       >
         <ul className="flex flex-col lg:flex-row">
-          <li className="mb-4 lg:mb-0 lg:mr-4 p-2 font-semibold cursor-pointer hover:text-slate-700 duration-200">
+          <li className="mb-4 lg:mb-0 lg:mr-4 p-2 font-semibold cursor-pointer hover:text-slate-700 duration-200 shadow-lg">
+            Home
+          </li>
+          <li className="mb-4 lg:mb-0 lg:mr-4 p-2 font-semibold cursor-pointer hover:text-slate-700 duration-200 shadow-lg">
             Contact
           </li>
-          <li className="mb-4 lg:mb-0 lg:mr-4 p-2 font-semibold cursor-pointer hover:text-slate-700 duration-200">
+          <li className="mb-4 lg:mb-0 lg:mr-4 p-2 font-semibold cursor-pointer hover:text-slate-700 duration-200 shadow-lg">
             About
           </li>
         </ul>
