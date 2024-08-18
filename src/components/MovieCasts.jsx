@@ -6,7 +6,7 @@ export default function MovieCasts({ movieId }) {
   const [showCasts, setShowCasts] = useState(false); // State to control when to show the cast
 
   const URL = `https://api.themoviedb.org/3/movie/${movieId}/credits`;
-  const API_KEY = import.meta.env.REACT_APP_API_KEY;
+  const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
   useEffect(() => {

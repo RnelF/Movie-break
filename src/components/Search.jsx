@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const URL = "https://api.themoviedb.org/3/search/movie";
-const API_KEY = "5d4d812535feac9d594d1bdec7c43c81";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 export default function Search({ setMovieData }) {
   const [query, setQuery] = useState("");

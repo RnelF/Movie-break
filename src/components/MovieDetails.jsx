@@ -6,7 +6,7 @@ export default function MovieDetails({ movieId }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const URL = `https://api.themoviedb.org/3/movie/${movieId}`;
-  const API_KEY = import.meta.env.REACT_APP_API_KEY;
+  const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
   useEffect(() => {
