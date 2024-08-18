@@ -35,10 +35,8 @@ export default function MovieStaffs({ movieId }) {
           {" "}
           <p className="mr-4 mt-1 text-md">Directed by:</p>
           {movieCrew.map((crew) => (
-            <div className="mr-4">
-              <h1 className="text-lg text-center" key={crew.id}>
-                {crew.name}
-              </h1>
+            <div key={crew.id} className="mr-4">
+              <h1 className="text-lg text-center">{crew.name}</h1>
             </div>
           ))}
         </div>
