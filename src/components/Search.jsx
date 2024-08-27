@@ -3,22 +3,22 @@ import { useEffect, useState } from "react";
 const URL = "https://api.themoviedb.org/3/search/movie";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
-export default function Search({ setMovieData }) {
+export default function Search({ movieData, setMovieData }) {
   const [query, setQuery] = useState("");
 
-  // Function to fetch data
-  async function fetchData() {
-    const res = await fetch(
-      `${URL}?query=${encodeURIComponent(query)}&api_key=${API_KEY}`
-    );
-    const data = await res.json();
-    setMovieData(data);
-  }
-
-  // Fetch data when the component mounts or query changes
   useEffect(() => {
+    async function fetchData() {
+      const res = await fetch(
+        `${URL}?query=${encodeURIComponent(query)}&api_key=${API_KEY}`
+      );
+      const data = await res.json();
+      setMovieData(data.results);
+    }
+
+    // Fetch data when the component mounts or query changes
+
     fetchData();
-  }, []);
+  }, [query]);
 
   return (
     <div className="flex justify-center mt-6">
@@ -29,12 +29,6 @@ export default function Search({ setMovieData }) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button
-        onClick={fetchData} // Trigger fetch on button click
-        className="border border-slate-500 rounded-sm p-2 hover:bg-slate-700 duration-300"
-      >
-        🔍
-      </button>
     </div>
   );
 }
