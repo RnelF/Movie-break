@@ -25,7 +25,7 @@ export default function Search({ movieData, setMovieData }) {
       <input
         className="w-2/4  border border-b-slate-400 p-2"
         type="text"
-        placeholder="Search"
+        placeholder="Search movie"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
