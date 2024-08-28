@@ -50,7 +50,7 @@ export default function MovieDetails({ movieId }) {
               </ul>
             )}
           </div>
-          <div className="615:flex 615:flex-row 615:justify-start 615:gap-40">
+          <div className="615:flex 615:flex-row 615:justify-between">
             <div className="flex flex-col mt-3 text-xs 615:text-xl">
               <div className="mr-4">⏳ {movie.runtime} Minutes</div>
               <div className="mr-4">📆 {movie.release_date}</div>
@@ -79,13 +79,13 @@ export default function MovieDetails({ movieId }) {
             </div>
           </div>
 
-          <div className="mt-6 text-xs">
+          <div className="mt-6 text-xs 615:text-lg 615:text-wrap">
             {isLoading ? (
               <p>Loading...</p>
             ) : (
               movie.production_companies.map((company) => (
                 <div
-                  className="flex flex-col 615:flex-row 615:items-center"
+                  className="flex flex-col 615:flex-row 615:items-center 615:mb-10"
                   key={company.id}
                 >
                   <div className="mr-5">
@@ -100,9 +100,9 @@ export default function MovieDetails({ movieId }) {
                   <div className="mt-3 mb-4">
                     {company.logo_path && (
                       <img
-                        className="w-20 p-3"
+                        className="w-20 p-3 615:w-28"
                         src={`${IMAGE_BASE_URL}${company.logo_path}`}
-                        alt={company.name}
+                        alt="No Logo Available"
                       />
                     )}
                   </div>
@@ -111,8 +111,8 @@ export default function MovieDetails({ movieId }) {
             )}
           </div>
 
-          <div className="text-wrap mt-6 text-left text-xs w-11/12">
-            <p className="font-bold text-lg">Overview</p>
+          <div className="text-wrap mt-6 text-left text-xs w-11/12 615:text-lg">
+            <p className="font-bold text-lg 615:text-2xl">Overview</p>
             <p>{movie.overview}</p>
           </div>
 
