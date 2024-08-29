@@ -14,6 +14,7 @@ export default {
         144: "576px",
       },
       screens: {
+        375: "375px",
         iphoneXr: "414px",
         415: "415px",
         615: "615px",
