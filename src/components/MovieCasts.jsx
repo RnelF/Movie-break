@@ -36,11 +36,11 @@ export default function MovieCasts({ movieId }) {
           {isLoading ? (
             <p>Loading . . .</p>
           ) : (
-            <div className="flex flex-col items-start gap-4 mt-4">
+            <div className="grid grid-cols items-start gap-4 mt-4 ">
               {castData.cast.map((cast) => (
-                <div key={cast.id} className="flex flex-row items-center">
+                <div key={cast.id} className="flex items-center 615:gap-5">
                   {/* Image Container */}
-                  <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="w-12 h-12 615:w-20 615:h-20 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
                     {cast.profile_path && (
                       <img
                         src={`${IMAGE_BASE_URL}${cast.profile_path}`}
@@ -50,7 +50,7 @@ export default function MovieCasts({ movieId }) {
                     )}
                   </div>
                   {/* Name Container */}
-                  <p className="mt-2 text-white text-center ml-2 text-xs">
+                  <p className="mt-2 text-white text-center ml-2 text-xs 615:text-lg">
                     {cast.name} / {cast.character}
                   </p>
                 </div>
