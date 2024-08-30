@@ -9,8 +9,19 @@ export default function Nav() {
 
   return (
     <div className="shadow-xl flex justify-between items-center p-6 text-nowrap w-full h-32">
-      <div className="text-3xl font-semibold 500:text-4xl 615:text-5xl">
-        Movie Break 🎬
+      <div className="relative">
+        <div
+          className="text-3xl font-semibold 375:text-4xl 615:text-5xl relative z-10 text-white"
+          style={{
+            textShadow:
+              "2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000",
+          }}
+        >
+          Movie Break
+        </div>
+        <div className="text-3xl font-semibold 375:text-5xl 615:text-6xl absolute 375:left-44 615:left-60 lg:left-60 -top-5 375:-top-1 p-1 rotate-45 z-0">
+          <p>🎬</p>
+        </div>
       </div>
 
       <div className="lg:hidden">
