@@ -50,7 +50,7 @@ export default function MovieCasts({ movieId }) {
                     )}
                   </div>
                   {/* Name Container */}
-                  <p className="mt-2 text-white text-center ml-2 text-xs 615:text-lg">
+                  <p className="mt-2 text-white text-center ml-2 text-xs 615:text-lg lg:text-sm">
                     {cast.name} / {cast.character}
                   </p>
                 </div>
