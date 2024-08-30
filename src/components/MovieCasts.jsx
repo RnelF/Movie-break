@@ -19,14 +19,14 @@ export default function MovieCasts({ movieId }) {
     }
 
     if (showCasts) {
-      fetchCasts(); // Fetch data only if showCasts is true
+      fetchCasts();
     }
-  }, [showCasts, movieId]); // Re-run when showCasts or movieId changes
+  }, [showCasts, movieId]);
 
   return (
     <div className="bg-gray-800 p-4">
       <button
-        onClick={() => setShowCasts(!showCasts)} // Toggle the state when clicked
+        onClick={() => setShowCasts(!showCasts)}
         className="bg-blue-500 text-white p-2 rounded"
       >
         {showCasts ? "Hide Cast" : "View All Cast"}
@@ -36,7 +36,7 @@ export default function MovieCasts({ movieId }) {
           {isLoading ? (
             <p>Loading . . .</p>
           ) : (
-            <div className="grid grid-cols items-start gap-4 mt-4 ">
+            <div className="grid grid-cols lg:grid-cols-2 items-start gap-4 mt-4 ">
               {castData.cast.map((cast) => (
                 <div key={cast.id} className="flex items-center 615:gap-5">
                   {/* Image Container */}
