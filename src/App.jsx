@@ -8,12 +8,22 @@ import Genres from "./components/Genres";
 function App() {
   const [movieData, setMovieData] = useState([]);
   const [movieId, setMovieId] = useState("299534");
+  const [genreId, setGenreId] = useState(null);
   return (
     <>
       <Nav movieId={movieId} setMovieId={setMovieId} />
       <Search movieData={movieData} setMovieData={setMovieData} />
-      <Genres movieData={movieData} />
-      <MovieList movieData={movieData} setMovieId={setMovieId} />
+      <Genres
+        genreId={genreId}
+        setGenreId={setGenreId}
+        setMovieData={setMovieData}
+      />
+      <MovieList
+        genreId={genreId}
+        movieData={movieData}
+        setMovieData={setMovieData}
+        setMovieId={setMovieId}
+      />
 
       <MovieDetails movieId={movieId} />
     </>
