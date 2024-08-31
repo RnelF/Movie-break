@@ -22,7 +22,7 @@ export default function MovieDetails({ movieId }) {
   return (
     <div className=" mt-6 text-nowrap text-white">
       <div className=" w-90 iphoneXr:mx-5 415:mx-auto 615:w-auto 615:h-auto 615:mx-10 bg-gray-800 rounded-lg p-2 lg:p-5">
-        <div className="1500:flex 1500:flex-row">
+        <div className="1500:flex 1500:flex-row items-center">
           <div className="lg:flex lg:justify-start ">
             <div className="w-40 h-68 mx-auto lg:mx-10 pt-4 615:w-80 615:h-auto 615:pt-8 1500:w-100">
               <img
@@ -33,17 +33,17 @@ export default function MovieDetails({ movieId }) {
             </div>
 
             <div className="flex flex-col p-3 615:p-10 ">
-              <h1 className="text-lg text-wrap 615:text-5xl">
+              <h1 className="text-lg text-wrap 615:text-5xl 1500:text-3xl">
                 {movie.original_title}
               </h1>
               <div className="mt-4 text-sm flex flex-col">
                 {isLoading ? (
                   <p>Loading . . . </p>
                 ) : (
-                  <ul className=" list-none flex flex-row justify-start text-black">
+                  <ul className=" list-none grid grid-cols-3 gap-2 justify-start text-black">
                     {movie.genres.map((genre) => (
                       <li
-                        className="bg-slate-300 rounded-lg pl-1 pr-1 mr-2 text-sm 615:text-2xl"
+                        className="bg-slate-300 rounded-lg text-sm 615:text-lg  overflow-visible px-1 text-center"
                         key={genre.id}
                       >
                         {genre.name}
@@ -83,13 +83,13 @@ export default function MovieDetails({ movieId }) {
             </div>
           </div>
 
-          <div className="mt-3 text-xs 615:text-lg 615:text-wrap">
+          <div className="mt-3 text-xs 615:text-lg 615:text-wrap ">
             {isLoading ? (
               <p>Loading...</p>
             ) : (
               movie.production_companies.map((company) => (
                 <div
-                  className="flex flex-col 615:flex-row 615:items-center 615:mb-10"
+                  className="flex flex-col 615:flex-row 615:items-center 615:mb-10 "
                   key={company.id}
                 >
                   <div className="mr-5">
