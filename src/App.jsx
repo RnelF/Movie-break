@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+
 import Nav from "./components/Nav";
 import MovieDetails from "./components/MovieDetails";
 import MovieCasts from "./components/MovieCasts";
@@ -9,6 +10,13 @@ function App() {
   const [movieData, setMovieData] = useState([]);
   const [movieId, setMovieId] = useState("299534");
   const [genreId, setGenreId] = useState(null);
+
+  const movieDetailsRef = useRef(null);
+
+  const handleViewMovie = (id) => {
+    setMovieId(id);
+    movieDetailsRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <>
       <Nav movieId={movieId} setMovieId={setMovieId} />
@@ -22,10 +30,11 @@ function App() {
         genreId={genreId}
         movieData={movieData}
         setMovieData={setMovieData}
-        setMovieId={setMovieId}
+        setMovieId={handleViewMovie}
       />
-
-      <MovieDetails movieId={movieId} />
+      <div ref={movieDetailsRef}>
+        <MovieDetails movieId={movieId} />
+      </div>
     </>
   );
 }
