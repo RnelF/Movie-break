@@ -1,14 +1,30 @@
+import { useRef } from "react";
 import MovieItem from "./MovieItem.jsx";
 import MovieListWithPagination from "./MovieListWithPagination.jsx";
+
 export default function MovieList({
   movieData,
   setMovieId,
   genreId,
   setMovieData,
 }) {
+  const listTopRef = useRef(null);
+
+  const handlePageChange = () => {
+    if (listTopRef.current) {
+      listTopRef.current.scroll({
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div>
-      <div className="grid grid-cols-1 gap-4 375:grid-cols-1    justify-items-center mt-10  615:grid-cols-3 900:flex 900:flex-row overflow-scroll ">
+      <div
+        ref={listTopRef}
+        className=" mt-10 flex flex-row overflow-auto gap-3"
+      >
         {movieData.map((movie) => (
           <MovieItem setMovieId={setMovieId} key={movie.id} movie={movie} />
         ))}
@@ -18,6 +34,7 @@ export default function MovieList({
           <MovieListWithPagination
             genreId={genreId}
             setMovieData={setMovieData}
+            onPageChange={handlePageChange}
           />
         )}
       </div>

@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 
-export default function MovieListWithPagination({ genreId, setMovieData }) {
+export default function MovieListWithPagination({
+  genreId,
+  setMovieData,
+  onPageChange,
+}) {
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const [page, setPage] = useState(1); // Track the current page
 
@@ -11,20 +15,20 @@ export default function MovieListWithPagination({ genreId, setMovieData }) {
       );
       const data = await res.json();
       setMovieData(data.results);
+
+      if (onPageChange) {
+        onPageChange();
+      }
     }
     fetchMovies();
   }, [page]);
 
   return (
     <div>
-      {/* Movie list rendering */}
-      {/* Assuming movieData is rendered here */}
-
-      {/* Pagination Controls */}
       <div className="mt-4 flex justify-center gap-4">
         <button
           className="bg-gray-300 py-1 px-3 rounded hover:bg-gray-500 hover:text-white"
-          onClick={() => setPage(page - 1)}
+          onClick={() => setPage((prevPage) => Math.max(prevPage - 1, 1))}
           disabled={page === 1} // Disable "Previous" button on the first page
         >
           Previous
@@ -32,7 +36,7 @@ export default function MovieListWithPagination({ genreId, setMovieData }) {
         <span>Page {page}</span>
         <button
           className="bg-gray-300 py-1 px-3 rounded hover:bg-gray-500 hover:text-white"
-          onClick={() => setPage(page + 1)}
+          onClick={() => setPage((prevPage) => prevPage + 1)}
         >
           Next
         </button>

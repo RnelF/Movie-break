@@ -7,14 +7,14 @@ export default function MovieItem({ movie, setMovieId }) {
           onClick={() => {
             setMovieId(movie.id);
           }}
-          className="bg-indigo-300 text-gray-800 font-semibold p-1 rounded-sm 500:text-lg 615:text-xl hover:text-gray-900 hover:bg-indigo-400 duration-200"
+          className="bg-indigo-300 text-gray-800 font-semibold p-1 rounded-sm 500:text-lg 615:text-sm hover:text-gray-900 hover:bg-indigo-400  duration-200"
         >
           View Movie
         </button>
       </div>
-      <div>
+      <div className="w-32 500:w-40 615:w-40 h-auto">
         <img
-          className="w-32 500:w-40 615:w-40"
+          className="w-full"
           src={`${IMAGE_BASE_URL}${movie.poster_path}`}
           alt="Poster Unavailable"
         />

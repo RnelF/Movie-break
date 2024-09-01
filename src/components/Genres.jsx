@@ -33,8 +33,11 @@ export default function Genres({ genreId, setGenreId, setMovieData }) {
         {genres.map((genre) => (
           <div key={genre.id}>
             <button
-              className="bg-slate-200 py-1 px-2 rounded-sm text-nowrap text-sm hover:bg-slate-600 hover:text-white duration-200"
-              key={genre.id}
+              className={`py-1 px-2 rounded-sm text-nowrap text-sm duration-200 ${
+                genreId === genre.id
+                  ? "bg-slate-600 text-white"
+                  : "bg-slate-200 hover:bg-slate-600 hover:text-white"
+              }`}
               onClick={() => setGenreId(genre.id)}
             >
               {genre.name}
