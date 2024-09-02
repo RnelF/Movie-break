@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 
-export default function MovieCasts({ movieId }) {
+export default function MovieCasts({ movieId, showCasts, setShowCasts }) {
   const [castData, setCastData] = useState({ cast: [] });
   const [isLoading, setIsLoading] = useState(true);
-  const [showCasts, setShowCasts] = useState(false); // State to control when to show the full cast
 
   const URL = `https://api.themoviedb.org/3/movie/${movieId}/credits`;
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;

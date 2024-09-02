@@ -14,6 +14,7 @@ function App() {
   const [genres, setGenres] = useState([]);
   const [isGenreChanged, setIsGenreChanged] = useState(false);
   const [isUserSearch, setIsUserSearch] = useState(false);
+  const [showCasts, setShowCasts] = useState(false); // State to control when to show the full cast
 
   const movieDetailsRef = useRef(null);
 
@@ -46,10 +47,15 @@ function App() {
         movieData={movieData}
         setMovieData={setMovieData}
         setMovieId={handleViewMovie}
+        setShowCasts={setShowCasts}
       />
 
       <div ref={movieDetailsRef}>
-        <MovieDetails movieId={movieId} />
+        <MovieDetails
+          movieId={movieId}
+          showCasts={showCasts}
+          setShowCasts={setShowCasts}
+        />
       </div>
     </>
   );

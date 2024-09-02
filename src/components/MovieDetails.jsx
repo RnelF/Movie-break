@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import MovieCasts from "./MovieCasts";
 import MovieStaffs from "./MovieStaffs";
 
-export default function MovieDetails({ movieId }) {
+export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const URL = `https://api.themoviedb.org/3/movie/${movieId}`;
@@ -126,7 +126,11 @@ export default function MovieDetails({ movieId }) {
         </div>
 
         <div>
-          <MovieCasts movieId={movieId} />
+          <MovieCasts
+            movieId={movieId}
+            showCasts={showCasts}
+            setShowCasts={setShowCasts}
+          />
         </div>
       </div>
     </div>
