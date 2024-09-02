@@ -17,9 +17,9 @@ export default function Nav() {
               "2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000",
           }}
         >
-          Movie Break
+          MoFlix
         </div>
-        <div className="text-3xl font-semibold 375:text-5xl 615:text-6xl absolute 375:left-44 615:left-60 lg:left-60 -top-5 375:-top-1 p-1 rotate-45 z-0">
+        <div className="text-3xl font-semibold 375:text-5xl 615:text-6xl absolute 375:left-24 615:left-32 lg:left-32 -top-5 375:-top-1 p-1 rotate-45 z-0">
           <p>🎬</p>
         </div>
       </div>
