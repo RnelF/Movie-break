@@ -7,6 +7,7 @@ export default function Genres({
   genres,
   setGenres,
   setIsGenreChanged,
+  setIsUserSearch,
 }) {
   const URL = "https://api.themoviedb.org/3/genre/movie/list";
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -48,6 +49,7 @@ export default function Genres({
               onClick={() => {
                 setGenreId(genre.id);
                 setIsGenreChanged(true);
+                setIsUserSearch(false);
               }}
             >
               {genre.name}

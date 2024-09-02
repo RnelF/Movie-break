@@ -9,6 +9,7 @@ export default function MovieList({
   setMovieData,
   genres,
   isGenreChanged,
+  isUserSearch,
 }) {
   const listTopRef = useRef(null);
 
@@ -32,15 +33,17 @@ export default function MovieList({
         ))}
       </div>
       <div>
-        {movieData.length > 0 && (
-          <MovieListWithPagination
-            genres={genres}
-            genreId={genreId}
-            setMovieData={setMovieData}
-            onPageChange={handlePageChange}
-            isGenreChanged={isGenreChanged}
-          />
-        )}
+        {isUserSearch
+          ? ""
+          : movieData.length > 0 && (
+              <MovieListWithPagination
+                genres={genres}
+                genreId={genreId}
+                setMovieData={setMovieData}
+                onPageChange={handlePageChange}
+                isGenreChanged={isGenreChanged}
+              />
+            )}
       </div>
     </div>
   );
