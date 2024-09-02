@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 
-export default function Genres({ genreId, setGenreId, setMovieData }) {
+export default function Genres({
+  genreId,
+  setGenreId,
+  setMovieData,
+  genres,
+  setGenres,
+  setIsGenreChanged,
+}) {
   const URL = "https://api.themoviedb.org/3/genre/movie/list";
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-  const [genres, setGenres] = useState([]);
 
   const GENRE_URL = "https://api.themoviedb.org/3/discover/movie?with_genres=";
 
@@ -14,17 +20,18 @@ export default function Genres({ genreId, setGenreId, setMovieData }) {
       setGenres(data.genres);
     }
     fetchGenres();
-  }, []);
+  }, [setGenres]);
 
   useEffect(() => {
     async function fetchMovieByGenre() {
       const res = await fetch(`${GENRE_URL}${genreId}&api_key=${API_KEY}`);
       const data = await res.json();
       setMovieData(data.results);
+      setIsGenreChanged(false);
       console.log(data.results);
     }
     fetchMovieByGenre();
-  }, [genreId]);
+  }, [genreId, setMovieData, setIsGenreChanged]);
 
   return (
     <div className="mt-4 ">
@@ -38,7 +45,10 @@ export default function Genres({ genreId, setGenreId, setMovieData }) {
                   ? "bg-slate-600 text-white"
                   : "bg-slate-200 hover:bg-slate-600 hover:text-white"
               }`}
-              onClick={() => setGenreId(genre.id)}
+              onClick={() => {
+                setGenreId(genre.id);
+                setIsGenreChanged(true);
+              }}
             >
               {genre.name}
             </button>

@@ -10,6 +10,8 @@ function App() {
   const [movieData, setMovieData] = useState([]);
   const [movieId, setMovieId] = useState("299534");
   const [genreId, setGenreId] = useState(null);
+  const [genres, setGenres] = useState([]);
+  const [isGenreChanged, setIsGenreChanged] = useState(false);
 
   const movieDetailsRef = useRef(null);
 
@@ -22,11 +24,16 @@ function App() {
       <Nav movieId={movieId} setMovieId={setMovieId} />
       <Search movieData={movieData} setMovieData={setMovieData} />
       <Genres
+        setIsGenreChanged={setIsGenreChanged}
+        genres={genres}
+        setGenres={setGenres}
         genreId={genreId}
         setGenreId={setGenreId}
         setMovieData={setMovieData}
       />
       <MovieList
+        isGenreChanged={isGenreChanged}
+        genres={genres}
         genreId={genreId}
         movieData={movieData}
         setMovieData={setMovieData}

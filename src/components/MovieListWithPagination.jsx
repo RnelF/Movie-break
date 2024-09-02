@@ -4,12 +4,17 @@ export default function MovieListWithPagination({
   genreId,
   setMovieData,
   onPageChange,
+  genres,
+  isGenreChanged,
 }) {
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const [page, setPage] = useState(1); // Track the current page
 
   useEffect(() => {
     async function fetchMovies() {
+      if (isGenreChanged) {
+        handlePageReset();
+      }
       const res = await fetch(
         `https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}&api_key=${API_KEY}&page=${page}`
       );
@@ -21,7 +26,11 @@ export default function MovieListWithPagination({
       }
     }
     fetchMovies();
-  }, [page]);
+  }, [page, genreId, isGenreChanged]);
+
+  const handlePageReset = () => {
+    setPage(1);
+  };
 
   return (
     <div>

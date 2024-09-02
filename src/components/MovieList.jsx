@@ -7,6 +7,8 @@ export default function MovieList({
   setMovieId,
   genreId,
   setMovieData,
+  genres,
+  isGenreChanged,
 }) {
   const listTopRef = useRef(null);
 
@@ -32,9 +34,11 @@ export default function MovieList({
       <div>
         {movieData.length > 0 && (
           <MovieListWithPagination
+            genres={genres}
             genreId={genreId}
             setMovieData={setMovieData}
             onPageChange={handlePageChange}
+            isGenreChanged={isGenreChanged}
           />
         )}
       </div>
