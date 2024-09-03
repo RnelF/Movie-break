@@ -6,6 +6,7 @@ import MovieCasts from "./components/MovieCasts";
 import Search from "./components/Search";
 import MovieList from "./components/MovieList";
 import Genres from "./components/Genres";
+import PopularMoviesList from "./components/PopularMoviesList";
 
 function App() {
   const [movieData, setMovieData] = useState([]);
@@ -17,6 +18,8 @@ function App() {
   const [showCasts, setShowCasts] = useState(false); // State to control when to show the full cast
   const [genreName, setGenreName] = useState("");
   const [isGenreActive, setIsGenreActive] = useState(false);
+  const [popularMovieData, setPopularMovieData] = useState([]);
+  const [popularMovieId, setPopularMovieId] = useState("");
 
   const movieDetailsRef = useRef(null);
 
@@ -46,6 +49,11 @@ function App() {
         setGenreName={setGenreName}
         setIsGenreActive={setIsGenreActive}
         isGenreActive={isGenreActive}
+      />
+      <PopularMoviesList
+        setMovieId={setMovieId}
+        setPopularMovieData={setPopularMovieData}
+        popularMovieData={popularMovieData}
       />
       <MovieList
         isGenreChanged={isGenreChanged}
