@@ -3,7 +3,14 @@ import { useEffect, useState } from "react";
 const URL = "https://api.themoviedb.org/3/search/movie";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
-export default function Search({ movieData, setMovieData, setIsUserSearch }) {
+export default function Search({
+  movieData,
+  setMovieData,
+  setIsUserSearch,
+  genreName,
+  setGenreName,
+  setIsGenreActive,
+}) {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
@@ -18,6 +25,9 @@ export default function Search({ movieData, setMovieData, setIsUserSearch }) {
     // Fetch data when the component mounts or query changes
 
     fetchData();
+    if (genreName) {
+      setGenreName("");
+    }
   }, [query]);
 
   return (
@@ -30,6 +40,7 @@ export default function Search({ movieData, setMovieData, setIsUserSearch }) {
         onChange={(e) => {
           setQuery(e.target.value);
           setIsUserSearch(true);
+          setIsGenreActive(false);
         }}
       />
     </div>

@@ -8,6 +8,9 @@ export default function Genres({
   setGenres,
   setIsGenreChanged,
   setIsUserSearch,
+  setGenreName,
+  setIsGenreActive,
+  isGenreActive,
 }) {
   const URL = "https://api.themoviedb.org/3/genre/movie/list";
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -42,7 +45,7 @@ export default function Genres({
           <div key={genre.id}>
             <button
               className={`py-1 px-2 rounded-sm text-nowrap text-sm duration-200 ${
-                genreId === genre.id
+                genreId === genre.id && isGenreActive
                   ? "bg-slate-600 text-white"
                   : "bg-slate-200 hover:bg-slate-600 hover:text-white"
               }`}
@@ -50,6 +53,8 @@ export default function Genres({
                 setGenreId(genre.id);
                 setIsGenreChanged(true);
                 setIsUserSearch(false);
+                setGenreName(genre.name);
+                setIsGenreActive(true);
               }}
             >
               {genre.name}

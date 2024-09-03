@@ -15,6 +15,8 @@ function App() {
   const [isGenreChanged, setIsGenreChanged] = useState(false);
   const [isUserSearch, setIsUserSearch] = useState(false);
   const [showCasts, setShowCasts] = useState(false); // State to control when to show the full cast
+  const [genreName, setGenreName] = useState("");
+  const [isGenreActive, setIsGenreActive] = useState(false);
 
   const movieDetailsRef = useRef(null);
 
@@ -29,6 +31,9 @@ function App() {
         movieData={movieData}
         setMovieData={setMovieData}
         setIsUserSearch={setIsUserSearch}
+        genreName={genreName}
+        setGenreName={setGenreName}
+        setIsGenreActive={setIsGenreActive}
       />
       <Genres
         setIsGenreChanged={setIsGenreChanged}
@@ -38,6 +43,9 @@ function App() {
         genreId={genreId}
         setGenreId={setGenreId}
         setMovieData={setMovieData}
+        setGenreName={setGenreName}
+        setIsGenreActive={setIsGenreActive}
+        isGenreActive={isGenreActive}
       />
       <MovieList
         isGenreChanged={isGenreChanged}
@@ -48,6 +56,7 @@ function App() {
         setMovieData={setMovieData}
         setMovieId={handleViewMovie}
         setShowCasts={setShowCasts}
+        genreName={genreName}
       />
 
       <div ref={movieDetailsRef}>

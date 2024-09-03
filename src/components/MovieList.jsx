@@ -11,6 +11,7 @@ export default function MovieList({
   isGenreChanged,
   isUserSearch,
   setShowCasts,
+  genreName,
 }) {
   const listTopRef = useRef(null);
 
@@ -25,10 +26,12 @@ export default function MovieList({
 
   return (
     <div>
-      <div
-        ref={listTopRef}
-        className=" mt-10 flex flex-row overflow-auto gap-3"
-      >
+      <div className="m-5">
+        <h1 className="text-2xl font-semibold">
+          {genreName ? `${genreName} Films` : ""}
+        </h1>
+      </div>
+      <div ref={listTopRef} className=" mt-5 flex flex-row overflow-auto gap-3">
         {movieData.map((movie) => (
           <MovieItem
             setMovieId={setMovieId}
