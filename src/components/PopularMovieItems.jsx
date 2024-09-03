@@ -19,7 +19,9 @@ export default function PopularMovieItems({
       <div className="w-32 500:w-40 615:w-40 h-auto">
         <img className="w-full" src={`${IMAGE_BASE_URL}${movie.poster_path}`} />
       </div>
-      <div>{movie.title}</div>
+      <div className="text-base text-wrap font-semibold 500:text-xl 615:text-xl">
+        {movie.title}
+      </div>
     </div>
   );
 }

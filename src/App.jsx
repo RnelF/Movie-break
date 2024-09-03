@@ -10,7 +10,7 @@ import PopularMoviesList from "./components/PopularMoviesList";
 
 function App() {
   const [movieData, setMovieData] = useState([]);
-  const [movieId, setMovieId] = useState("299534");
+  const [movieId, setMovieId] = useState("");
   const [genreId, setGenreId] = useState(null);
   const [genres, setGenres] = useState([]);
   const [isGenreChanged, setIsGenreChanged] = useState(false);
@@ -19,13 +19,17 @@ function App() {
   const [genreName, setGenreName] = useState("");
   const [isGenreActive, setIsGenreActive] = useState(false);
   const [popularMovieData, setPopularMovieData] = useState([]);
-  const [popularMovieId, setPopularMovieId] = useState("");
+  const [movieIdFromPopular, setmovieIdFromPopular] = useState([]);
 
   const movieDetailsRef = useRef(null);
 
   const handleViewMovie = (id) => {
-    setMovieId(id);
-    movieDetailsRef.current?.scrollIntoView({ behavior: "smooth" });
+    setMovieId(id); // Update movieId
+    setTimeout(() => {
+      if (movieDetailsRef.current) {
+        movieDetailsRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 0);
   };
   return (
     <>
@@ -62,17 +66,20 @@ function App() {
         genreName={genreName}
       />
       <PopularMoviesList
-        setMovieId={setMovieId}
+        setMovieId={handleViewMovie}
         setPopularMovieData={setPopularMovieData}
         popularMovieData={popularMovieData}
+        setmovieIdFromPopular={setmovieIdFromPopular}
       />
 
       <div ref={movieDetailsRef}>
-        <MovieDetails
-          movieId={movieId}
-          showCasts={showCasts}
-          setShowCasts={setShowCasts}
-        />
+        {movieId && (
+          <MovieDetails
+            movieId={movieId}
+            showCasts={showCasts}
+            setShowCasts={setShowCasts}
+          />
+        )}
       </div>
     </>
   );
