@@ -40,10 +40,10 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
                 {isLoading ? (
                   <p>Loading . . . </p>
                 ) : (
-                  <ul className=" list-none grid grid-cols-3 gap-2  text-black w-fit">
+                  <ul className=" list-none grid grid-cols-3 gap-2  text-black w-auto">
                     {movie.genres.map((genre) => (
                       <li
-                        className="bg-slate-300 rounded-lg  text-sm 615:text-lg px-1 text-center"
+                        className="bg-slate-300 rounded-lg  text-sm 615:text-md px-1 text-center  overflow-hidden whitespace-nowrap overflow-ellipsis"
                         key={genre.id}
                       >
                         {genre.name}

@@ -1,5 +1,6 @@
 import PopularMovieItems from "./PopularMovieItems";
 import { useEffect, useState } from "react";
+import "../custom-scrollbars.css";
 
 const URL = "https://api.themoviedb.org/3/movie/popular";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -28,7 +29,7 @@ export default function PopularMoviesList({
       <div className="m-5">
         <h1 className="text-2xl font-semibold">Popular Now</h1>
       </div>
-      <div className="mt-5 flex flex-row overflow-auto gap-3">
+      <div className=" scrollable-container mt-5 flex flex-row overflow-auto gap-3">
         {popularMovieData.map((movie) => (
           <PopularMovieItems
             key={movie.id}

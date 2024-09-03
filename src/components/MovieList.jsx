@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import MovieItem from "./MovieItem.jsx";
 import MovieListWithPagination from "./MovieListWithPagination.jsx";
+import "../custom-scrollbars.css";
 
 export default function MovieList({
   movieData,
@@ -31,7 +32,10 @@ export default function MovieList({
           {genreName ? `${genreName} Films` : ""}
         </h1>
       </div>
-      <div ref={listTopRef} className=" mt-5 flex flex-row overflow-auto gap-3">
+      <div
+        ref={listTopRef}
+        className="scrollable-container mt-5 flex flex-row overflow-auto gap-3"
+      >
         {movieData.map((movie) => (
           <MovieItem
             setMovieId={setMovieId}

@@ -50,11 +50,6 @@ function App() {
         setIsGenreActive={setIsGenreActive}
         isGenreActive={isGenreActive}
       />
-      <PopularMoviesList
-        setMovieId={setMovieId}
-        setPopularMovieData={setPopularMovieData}
-        popularMovieData={popularMovieData}
-      />
       <MovieList
         isGenreChanged={isGenreChanged}
         isUserSearch={isUserSearch}
@@ -65,6 +60,11 @@ function App() {
         setMovieId={handleViewMovie}
         setShowCasts={setShowCasts}
         genreName={genreName}
+      />
+      <PopularMoviesList
+        setMovieId={setMovieId}
+        setPopularMovieData={setPopularMovieData}
+        popularMovieData={popularMovieData}
       />
 
       <div ref={movieDetailsRef}>
