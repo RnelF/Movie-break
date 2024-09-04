@@ -1,5 +1,5 @@
 import PopularMovieItems from "./PopularMovieItems";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "../custom-scrollbars.css";
 
 const URL = "https://api.themoviedb.org/3/movie/popular";

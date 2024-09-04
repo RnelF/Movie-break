@@ -7,6 +7,7 @@ import Search from "./components/Search";
 import MovieList from "./components/MovieList";
 import Genres from "./components/Genres";
 import PopularMoviesList from "./components/PopularMoviesList";
+import HighestRatedMoviesList from "./components/HighestRatedMoviesList";
 
 function App() {
   const [movieData, setMovieData] = useState([]);
@@ -20,6 +21,7 @@ function App() {
   const [isGenreActive, setIsGenreActive] = useState(false);
   const [popularMovieData, setPopularMovieData] = useState([]);
   const [movieIdFromPopular, setmovieIdFromPopular] = useState([]);
+  const [highRatedMovieData, setHighRatedMovieData] = useState([]);
 
   const movieDetailsRef = useRef(null);
 
@@ -70,6 +72,11 @@ function App() {
         setPopularMovieData={setPopularMovieData}
         popularMovieData={popularMovieData}
         setmovieIdFromPopular={setmovieIdFromPopular}
+      />
+      <HighestRatedMoviesList
+        setHighRatedMovieData={setHighRatedMovieData}
+        highRatedMovieData={highRatedMovieData}
+        setMovieId={setMovieId}
       />
 
       <div ref={movieDetailsRef}>

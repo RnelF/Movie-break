@@ -1,14 +1,15 @@
-import PopularMovieItems from "./PopularMovieItems";
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
+import HighRatedMovieItems from "./HighRatedMovieItems";
+import HighRatedMovieListWithPagination from "./HighRatedMovieListWithPagination.jsx";
 import "../custom-scrollbars.css";
 
-const URL = "https://api.themoviedb.org/3/movie/popular";
+const URL = "https://api.themoviedb.org/3/movie/top_rated";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 export default function HighestRatedMoviesList({
+  setHighRatedMovieData,
+  highRatedMovieData,
   setMovieId,
-  popularMovieData,
-  setPopularMovieData,
 }) {
   const listTopRef = useRef(null);
 
@@ -22,35 +23,39 @@ export default function HighestRatedMoviesList({
   };
 
   useEffect(() => {
-    async function fetchPopularMoviesData() {
+    async function fetchHighRatedMoviesData() {
       const res = await fetch(`${URL}?api_key=${API_KEY}&page=1`);
       const data = await res.json();
-      setPopularMovieData(data.results);
-
-      if (data.results.length > 0) {
-        setMovieId(data.results[0].id);
-      }
+      setHighRatedMovieData(data.results);
     }
 
-    fetchPopularMoviesData();
-  }, [setPopularMovieData, setMovieId]);
+    fetchHighRatedMoviesData();
+  }, [setHighRatedMovieData]);
 
   return (
     <div className="shadow-md shadow-slate-900">
       <div className="m-5">
-        <h1 className="text-2xl font-semibold">Popular Now</h1>
+        <h1 className="text-2xl font-semibold">High Rated Movies</h1>
       </div>
       <div
         ref={listTopRef}
         className=" scrollable-container mt-5 flex flex-row overflow-auto gap-3"
       >
-        {popularMovieData.map((movie) => (
-          <PopularMovieItems
+        {highRatedMovieData.map((movie) => (
+          <HighRatedMovieItems
             key={movie.id}
             movie={movie}
             setMovieId={setMovieId}
           />
         ))}
+      </div>
+      <div>
+        {highRatedMovieData.length > 0 && (
+          <HighRatedMovieListWithPagination
+            onPageChange={handlePageChange}
+            setHighRatedMovieData={setHighRatedMovieData}
+          />
+        )}
       </div>
     </div>
   );
