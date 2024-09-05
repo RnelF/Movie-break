@@ -20,8 +20,8 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
     fetchMovie();
   }, [movieId]);
   return (
-    <div className=" mt-4 text-nowrap text-white">
-      <div className=" w-90 iphoneXr:mx-5 415:mx-auto 615:w-auto 615:h-auto 615:mx-10 bg-gray-800 rounded-lg p-2 lg:p-5">
+    <div className=" mt-4 text-nowrap text-white mx-auto">
+      <div className=" w-90 mx-auto 615:w-auto 615:h-auto 615:mx-10 bg-gray-800 rounded-lg p-2 lg:p-5">
         <div className="1500:flex 1500:flex-row items-center">
           <div className="lg:flex lg:justify-start ">
             <div className="w-40 h-68 mx-auto lg:mx-10 pt-4 615:w-80 615:h-auto 615:pt-8 1500:w-100">
