@@ -1,7 +1,7 @@
 export default function TrendingMovieItems({ movie, setMovieId }) {
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
   return (
-    <div className="w-40 500:w-48 615:w-48 bg-zinc-300 flex flex-col justify-start items-center p-3 gap-2">
+    <div className="w-40 500:w-48 615:w-48 bg-zinc-300 flex flex-col justify-start items-center p-3 gap-2 mb-2">
       <div>
         <button
           onClick={() => {

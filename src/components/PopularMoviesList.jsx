@@ -26,7 +26,7 @@ export default function PopularMoviesList({
   }, [setPopularMovieData, setmovieIdFromPopular]);
 
   return (
-    <div className="shadow-md shadow-slate-900">
+    <div className="shadow-md shadow-slate-900 pb-4">
       <div className="m-5">
         <h1 className="text-2xl font-semibold">Popular Now</h1>
       </div>
