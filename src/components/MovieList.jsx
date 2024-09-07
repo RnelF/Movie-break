@@ -13,6 +13,7 @@ export default function MovieList({
   isUserSearch,
   setShowCasts,
   genreName,
+  actorMoviesData,
 }) {
   const listTopRef = useRef(null);
 
@@ -36,6 +37,14 @@ export default function MovieList({
         ref={listTopRef}
         className="scrollable-container mt-5 flex flex-row overflow-auto gap-3"
       >
+        {actorMoviesData.map((movie) => (
+          <MovieItem
+            setMovieId={setMovieId}
+            key={movie.id}
+            movie={movie}
+            setShowCasts={setShowCasts}
+          />
+        ))}
         {movieData.map((movie) => (
           <MovieItem
             setMovieId={setMovieId}

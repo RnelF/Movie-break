@@ -89,31 +89,31 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
             {isLoading ? (
               <p>Loading...</p>
             ) : (
-              movie.production_companies.map((company) => (
-                <div
-                  className="flex flex-col 615:flex-row 615:items-center 615:mb-10 "
-                  key={company.id}
-                >
+              movie.production_companies.length > 0 && (
+                <div className="flex flex-col 615:flex-row 615:items-center 615:mb-10">
                   <div className="mr-5">
                     <p>Budget: ${movie.budget.toLocaleString()}</p>
                     <p>Revenue: ${movie.revenue.toLocaleString()}</p>
                   </div>
                   <div className="mr-5">
-                    <p>Origin Country: {company.origin_country}</p>
-                    <p>Company Name: {company.name}</p>
+                    <p>
+                      Origin Country:{" "}
+                      {movie.production_companies[0].origin_country}
+                    </p>
+                    <p>Company Name: {movie.production_companies[0].name}</p>
                   </div>
 
                   <div className="mt-3 mb-4">
-                    {company.logo_path && (
+                    {movie.production_companies[0].logo_path && (
                       <img
                         className="w-20 p-3 615:w-28"
-                        src={`${IMAGE_BASE_URL}${company.logo_path}`}
+                        src={`${IMAGE_BASE_URL}${movie.production_companies[0].logo_path}`}
                         alt="No Logo Available"
                       />
                     )}
                   </div>
                 </div>
-              ))
+              )
             )}
           </div>
         </div>
