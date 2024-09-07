@@ -1,14 +1,14 @@
 import { useEffect, useRef } from "react";
-import HighRatedMovieItems from "./HighRatedMovieItems";
-import HighRatedMovieListWithPagination from "./HighRatedMovieListWithPagination.jsx";
+import TrendingMovieItems from "./TrendingMovieItems.jsx";
+import TrendingMovieListWithPagination from "./TrendingMovieListWithPagination.jsx";
 import "../custom-scrollbars.css";
 
-const URL = "https://api.themoviedb.org/3/movie/top_rated";
+const URL = "https://api.themoviedb.org/3/trending/movie/week";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
-export default function HighestRatedMoviesList({
-  setHighRatedMovieData,
-  highRatedMovieData,
+export default function TrendingMoviesList({
+  setTrendingMovieData,
+  trendingMovieData,
   setMovieId,
 }) {
   const listTopRef = useRef(null);
@@ -23,26 +23,26 @@ export default function HighestRatedMoviesList({
   };
 
   useEffect(() => {
-    async function fetchHighRatedMoviesData() {
+    async function fetchTrendingMoviesData() {
       const res = await fetch(`${URL}?api_key=${API_KEY}&page=1`);
       const data = await res.json();
-      setHighRatedMovieData(data.results);
+      setTrendingMovieData(data.results);
     }
 
-    fetchHighRatedMoviesData();
-  }, [setHighRatedMovieData]);
+    fetchTrendingMoviesData();
+  }, [setTrendingMovieData]);
 
   return (
     <div className="shadow-md shadow-slate-900 pb-4">
       <div className="m-5">
-        <h1 className="text-2xl font-semibold">High Rated Movies</h1>
+        <h1 className="text-2xl font-semibold">Trending Movies</h1>
       </div>
       <div
         ref={listTopRef}
         className=" scrollable-container mt-5 flex flex-row overflow-auto gap-3"
       >
-        {highRatedMovieData.map((movie) => (
-          <HighRatedMovieItems
+        {trendingMovieData.map((movie) => (
+          <TrendingMovieItems
             key={movie.id}
             movie={movie}
             setMovieId={setMovieId}
@@ -50,10 +50,10 @@ export default function HighestRatedMoviesList({
         ))}
       </div>
       <div>
-        {highRatedMovieData.length > 0 && (
-          <HighRatedMovieListWithPagination
+        {trendingMovieData.length > 0 && (
+          <TrendingMovieListWithPagination
             onPageChange={handlePageChange}
-            setHighRatedMovieData={setHighRatedMovieData}
+            setTrendingMovieData={setTrendingMovieData}
           />
         )}
       </div>

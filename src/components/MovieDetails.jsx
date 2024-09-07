@@ -54,8 +54,10 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
               </div>
               <div className="615:flex 615:flex-row lg:flex-col 615:justify-between lg:justify-start mt-3">
                 <div className="flex flex-col mt-3 text-xs 615:text-xl">
-                  <div className="mr-4">⏳ {movie.runtime} Minutes</div>
-                  <div className="mr-4">📆 {movie.release_date}</div>
+                  <div className="mr-4">Runtime:⏳ {movie.runtime} Minutes</div>
+                  <div className="mr-4">
+                    Release Date: 📆 {movie.release_date}
+                  </div>
                   <div>{movie.adult ? "🔞" : "✅PG"}</div>
                 </div>
 

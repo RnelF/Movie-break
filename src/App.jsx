@@ -8,6 +8,7 @@ import MovieList from "./components/MovieList";
 import Genres from "./components/Genres";
 import PopularMoviesList from "./components/PopularMoviesList";
 import HighestRatedMoviesList from "./components/HighestRatedMoviesList";
+import TrendingMoviesList from "./components/TrendingMoviesList";
 
 function App() {
   const [movieData, setMovieData] = useState([]);
@@ -22,6 +23,7 @@ function App() {
   const [popularMovieData, setPopularMovieData] = useState([]);
   const [movieIdFromPopular, setmovieIdFromPopular] = useState([]);
   const [highRatedMovieData, setHighRatedMovieData] = useState([]);
+  const [trendingMovieData, setTrendingMovieData] = useState([]);
 
   const movieDetailsRef = useRef(null);
 
@@ -67,6 +69,13 @@ function App() {
         setShowCasts={setShowCasts}
         genreName={genreName}
       />
+
+      <TrendingMoviesList
+        setTrendingMovieData={setTrendingMovieData}
+        trendingMovieData={trendingMovieData}
+        setMovieId={handleViewMovie}
+      />
+
       <PopularMoviesList
         setMovieId={handleViewMovie}
         setPopularMovieData={setPopularMovieData}
@@ -76,7 +85,7 @@ function App() {
       <HighestRatedMoviesList
         setHighRatedMovieData={setHighRatedMovieData}
         highRatedMovieData={highRatedMovieData}
-        setMovieId={setMovieId}
+        setMovieId={handleViewMovie}
       />
 
       <div ref={movieDetailsRef}>

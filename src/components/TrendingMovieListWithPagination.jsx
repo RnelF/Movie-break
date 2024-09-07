@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-export default function HighRatedMovieListWithPagination({
+export default function TrendingMovieListWithPagination({
   onPageChange,
-  setHighRatedMovieData,
+  setTrendingMovieData,
 }) {
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const [page, setPage] = useState(1); // Track the current page
@@ -10,10 +10,10 @@ export default function HighRatedMovieListWithPagination({
   useEffect(() => {
     async function fetchMovies() {
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=${page}`
+        `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&page=${page}`
       );
       const data = await res.json();
-      setHighRatedMovieData(data.results);
+      setTrendingMovieData(data.results);
 
       if (onPageChange) {
         onPageChange();
@@ -24,7 +24,7 @@ export default function HighRatedMovieListWithPagination({
 
   return (
     <div>
-      <div className="mt-4 flex justify-center gap-4 ">
+      <div className="mt-4 flex justify-center gap-4">
         <button
           className="bg-gray-300 py-1 px-3 rounded hover:bg-gray-500 hover:text-white"
           onClick={() => setPage((prevPage) => Math.max(prevPage - 1, 1))}
