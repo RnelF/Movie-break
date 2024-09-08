@@ -25,6 +25,9 @@ export default {
         1200: "1200px",
         1500: "1500px",
       },
+      fontSize: {
+        11: "11px",
+      },
     },
   },
   plugins: [],

@@ -45,7 +45,7 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
   }, [movieId]);
   return (
     <div className=" mt-4 text-nowrap text-white mx-auto">
-      <div className=" w-90 mx-auto 615:w-full 615:h-auto 615:mx-10 bg-gray-800 rounded-lg p-2 lg:p-5">
+      <div className=" w-90 mx-auto 615:w-auto 615:h-auto 615:mx-10 bg-gray-800 rounded-lg ">
         <div
           className="1500:flex 1500:flex-row flex items-end lg:bg-cover lg:bg-center bg-right h-160 lg:h-144 rounded-lg"
           style={{
@@ -58,10 +58,10 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
             },
           }}
         >
-          <div className="flex flex-row m-2 lg:flex lg:justify-start">
-            <div className="w-40 h-68 mx-auto lg:mx-10 pt-4 615:w-80 615:h-auto 615:pt-8 1500:w-100">
+          <div className="flex m-2 lg:flex lg:justify-start">
+            <div className="w-48 h-auto mx-auto 615:w-52 lg:pl-4 lg:pb-4 pt-4 1500:w-56">
               <img
-                className="w-full h-full rounded-sm border border-slate-300 "
+                className="w-full rounded-lg border border-slate-300 "
                 src={`${IMAGE_BASE_URL}${movie.poster_path}`}
                 alt="img"
               />
@@ -87,7 +87,7 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
                   <ul className=" list-none grid grid-cols-3 gap-2  text-black w-auto">
                     {movie.genres.map((genre) => (
                       <li
-                        className="bg-slate-300 rounded-lg  text-sm 615:text-md px-1 text-center  overflow-hidden whitespace-nowrap overflow-ellipsis"
+                        className="bg-slate-300 rounded-lg  text-11 615:text-md px-1 text-center  overflow-hidden whitespace-nowrap overflow-ellipsis"
                         key={genre.id}
                       >
                         {genre.name}
@@ -97,7 +97,7 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
                 )}
               </div>
               <div
-                className="615:flex 615:flex-row lg:flex-col 615:justify-between lg:justify-start mt-3"
+                className="615:flex 615:flex-col lg:flex-col lg:justify-start mt-3"
                 style={{
                   textShadow: `
                   1px 1px 0 #000,
@@ -106,15 +106,13 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
                   -1px 1px 0 #000`,
                 }}
               >
-                <div className="flex flex-col mt-3 text-xs 615:text-xl">
+                <div className="flex flex-col mt-3 text-xs 615:text-base">
                   <div className="mr-4">Runtime:⏳ {movie.runtime} Minutes</div>
-                  <div className="mr-4">
-                    Release Date: 📆 {movie.release_date}
-                  </div>
+                  <div className="mr-4">Released: 📆 {movie.release_date}</div>
                   <div>{movie.adult ? "🔞" : "✅PG"}</div>
                 </div>
 
-                <div className="mt-2 text-xs 615:text-xl">
+                <div className="mt-2 text-xs 615:text-base">
                   <p>
                     Popularity:{" "}
                     <span className=" ml-1 font-semibold text-md">
@@ -138,7 +136,7 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
             </div>
           </div>
         </div>
-        <div className="mt-3 text-xs 615:text-lg 615:text-wrap ">
+        <div className="mt-3 text-xs 615:text-lg 615:text-wrap pl-3">
           {isLoading ? (
             <p>Loading...</p>
           ) : (
@@ -166,16 +164,16 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
           )}
         </div>
 
-        <div className="text-wrap mt-6 text-left text-xs w-11/12 615:text-lg">
+        <div className="text-wrap mt-6 text-left text-xs w-11/12 615:text-lg p-3">
           <p className="font-bold text-lg 615:text-2xl">Overview</p>
           <p>{movie.overview}</p>
         </div>
 
-        <div>
+        <div className="p-3">
           <MovieStaffs movieId={movieId} />
         </div>
 
-        <div>
+        <div className="p-3">
           <MovieCasts
             movieId={movieId}
             showCasts={showCasts}
