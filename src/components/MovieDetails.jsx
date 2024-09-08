@@ -7,7 +7,7 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
   const [isLoading, setIsLoading] = useState(true);
   const URL = `https://api.themoviedb.org/3/movie/${movieId}`;
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-  const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
+  const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
   const [backdropImg, setBackdropImg] = useState("");
 
   useEffect(() => {
@@ -44,8 +44,8 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
     fetchMovie();
   }, [movieId]);
   return (
-    <div className=" mt-4 text-nowrap text-white mx-auto">
-      <div className=" w-90 mx-auto 615:w-auto 615:h-auto 615:mx-10 bg-gray-800 rounded-lg ">
+    <div className=" mt-4 text-nowrap text-white mx-auto ">
+      <div className=" w-90 mx-auto 615:w-auto 615:h-auto 615:mx-10  rounded-lg bg-gradient-to-b from-dark-start via-dark-middle to-dark-end min-h-screen">
         <div
           className="1500:flex 1500:flex-row flex items-end lg:bg-cover lg:bg-center bg-right h-160 rounded-lg"
           style={{
@@ -58,28 +58,31 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
             },
           }}
         >
-          <div className="flex m-2 lg:flex lg:justify-start">
-            <div className="w-48 h-auto mx-auto 615:w-52 lg:pl-4 lg:pb-4 pt-4 1500:w-56">
-              <img
-                className="w-full rounded-lg border border-slate-300 "
-                src={`${IMAGE_BASE_URL}${movie.poster_path}`}
-                alt="img"
-              />
+          <div className="flex m-2 justify-start">
+            <div className="w-48 h-auto mx-auto 615:w-56 lg:w-64 lg:pl-4 lg:pb-4 pt-4 1500:w-72 flex items-center">
+              <div>
+                <img
+                  className="w-full rounded-lg border border-slate-300 "
+                  src={`${IMAGE_BASE_URL}${movie.poster_path}`}
+                  alt="img"
+                />
+              </div>
             </div>
 
             <div className="flex flex-col p-3 615:p-10 justify-items-end">
-              <h1
-                className="text-lg text-wrap 615:text-5xl 1500:text-3xl"
-                style={{
-                  textShadow: `
-                  1px 1px 0 #000,
-                  -1px -1px 0 #000,
-                  1px -1px 0 #000,
-                  -1px 1px 0 #000`,
-                }}
-              >
-                {movie.original_title}
-              </h1>
+              <div>
+                <h1
+                  className="text-xl text-gray-200 font-semibold text-wrap 615:text-5xl 1500:text-3xl mt-2"
+                  style={{
+                    textShadow: `
+                    1px 2px 2px rgba(0, 0, 0, 1),  /* Dark shadow to ensure readability */
+                    2px 2px 4px rgba(0, 0, 0, 1)`,
+                  }}
+                >
+                  {movie.original_title}
+                </h1>
+              </div>
+
               <div className="mt-4 text-sm flex flex-col">
                 {isLoading ? (
                   <p>Loading . . . </p>
@@ -97,13 +100,11 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
                 )}
               </div>
               <div
-                className="615:flex 615:flex-col lg:flex-col lg:justify-start mt-3"
+                className="615:flex 615:flex-col lg:flex-col lg:justify-start mt-3 text-gray-200"
                 style={{
                   textShadow: `
-                  1px 1px 0 #000,
-                  -1px -1px 0 #000,
-                  1px -1px 0 #000,
-                  -1px 1px 0 #000`,
+                    1px 2px 2px rgba(0, 0, 0, 1),  /* Dark shadow to ensure readability */
+                    2px 2px 4px rgba(0, 0, 0, 1)`,
                 }}
               >
                 <div className="flex flex-col mt-3 text-xs 615:text-base">

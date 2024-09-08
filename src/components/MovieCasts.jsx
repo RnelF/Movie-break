@@ -24,7 +24,7 @@ export default function MovieCasts({ movieId, showCasts, setShowCasts }) {
   const fullCast = castData.cast;
 
   return (
-    <div className="bg-gray-800 p-4">
+    <div className="bg-gradient-to-b from-dark-start via-dark-middle to-dark-end rounded-lg p-4">
       <div>
         {isLoading ? (
           <p>Loading . . .</p>

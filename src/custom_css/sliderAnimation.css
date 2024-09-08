@@ -1,0 +1,21 @@
+@keyframes slide {
+  0% {
+    transform: translateX(5px);
+  }
+  20% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(20px); /* Adjust this value for the desired effect */
+  }
+  70% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide {
+  animation: slide 0.3s ease-out;
+}

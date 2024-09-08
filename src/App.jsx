@@ -47,15 +47,6 @@ function App() {
         setIsGenreActive={setIsGenreActive}
         setActorMoviesData={setActorMoviesData}
       />
-      <div ref={movieDetailsRef}>
-        {movieId && (
-          <MovieDetails
-            movieId={movieId}
-            showCasts={showCasts}
-            setShowCasts={setShowCasts}
-          />
-        )}
-      </div>
       <Genres
         setIsGenreChanged={setIsGenreChanged}
         setIsUserSearch={setIsUserSearch}
@@ -80,6 +71,15 @@ function App() {
         genreName={genreName}
         actorMoviesData={actorMoviesData}
       />
+      <div ref={movieDetailsRef}>
+        {movieId && (
+          <MovieDetails
+            movieId={movieId}
+            showCasts={showCasts}
+            setShowCasts={setShowCasts}
+          />
+        )}
+      </div>
 
       <TrendingMoviesList
         setTrendingMovieData={setTrendingMovieData}
