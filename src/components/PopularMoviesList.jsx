@@ -26,11 +26,11 @@ export default function PopularMoviesList({
   }, [setPopularMovieData, setmovieIdFromPopular]);
 
   return (
-    <div className="shadow-md shadow-slate-900 pb-4">
+    <div className="pb-4">
       <div className="m-5">
         <h1 className="text-2xl font-semibold">Popular Now</h1>
       </div>
-      <div className=" scrollable-container mt-5 flex flex-row overflow-auto gap-3">
+      <div className="scrollable-container mt-5 flex flex-row overflow-auto gap-3">
         {popularMovieData.map((movie) => (
           <PopularMovieItems
             key={movie.id}

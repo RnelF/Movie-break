@@ -1,7 +1,8 @@
+import "../custom_css/edgeFade.css";
 export default function TrendingMovieItems({ movie, setMovieId }) {
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
   return (
-    <div className="w-40 500:w-48 615:w-48 bg-black bg-opacity-60 flex flex-col justify-start items-center p-3 gap-2 mb-2 rounded-lg">
+    <div className="w-40 500:w-48 615:w-48 bg-black bg-opacity-60 flex flex-col justify-start items-center p-3 gap-2 mb-2 rounded-lg edge-fade">
       <div>
         <button
           onClick={() => {

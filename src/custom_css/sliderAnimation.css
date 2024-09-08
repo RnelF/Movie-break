@@ -1,14 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @keyframes slide {
   0% {
-    transform: translateX(5px);
-  }
-  20% {
-    transform: translateX(10px);
+    transform: translateX(0);
   }
   50% {
-    transform: translateX(20px); /* Adjust this value for the desired effect */
-  }
-  70% {
     transform: translateX(10px);
   }
   100% {
@@ -17,5 +15,19 @@
 }
 
 .animate-slide {
-  animation: slide 0.3s ease-out;
+  animation: slide 0.3s ease-in-out; /* Adds a sliding animation */
+}
+
+.trending-movie-items {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.trending-movie-items.moving-left {
+  transform: translateX(-20px);
+  opacity: 0.8;
+}
+
+.trending-movie-items.moving-right {
+  transform: translateX(20px);
+  opacity: 0.8;
 }

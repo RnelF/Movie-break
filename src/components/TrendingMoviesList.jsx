@@ -5,6 +5,7 @@ import "../custom-scrollbars.css";
 import ArrowLeft from "../images/ArrowLeft.png";
 import ArrowRight from "../images/ArrowRight.png";
 import "../custom_css/sliderAnimation.css";
+import "../custom_css/edgeFade.css";
 
 const URL = "https://api.themoviedb.org/3/trending/movie/week";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -86,7 +87,7 @@ export default function TrendingMoviesList({
       {/* Movie List */}
       <div
         ref={listTopRef}
-        className="scrollable-container mt-5 flex flex-row overflow-hidden gap-3"
+        className="mt-5 flex flex-row overflow-hidden gap-3"
       >
         {trendingMovieData.map((movie) => (
           <TrendingMovieItems
