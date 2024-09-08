@@ -39,7 +39,7 @@ export default function Genres({
 
   return (
     <div className="mt-4 shadow-md shadow-slate-400">
-      <h3 className="ml-5 mb-3">Categories:</h3>
+      <h3 className="ml-5 mb-3 text-2xl font-semibold">Categories:</h3>
       <div className="flex flex-row flex-wrap justify-items-center gap-3 mx-5 ">
         {genres.map((genre) => (
           <div className="mb-2" key={genre.id}>

@@ -28,6 +28,19 @@ export default {
       fontSize: {
         11: "11px",
       },
+      colors: {
+        "movie-dark": "#121f2f",
+        "movie-gray": "#21303e",
+        "movie-red": "#782828",
+      },
+      gradientColorStops: (theme) => ({
+        "dark-start": "#121f2f",
+        "dark-middle": "#21303e",
+        "dark-end": "#782828",
+      }),
+      fontFamily: {
+        lato: ["Lato", "sans-serif"],
+      },
     },
   },
   plugins: [],

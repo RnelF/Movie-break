@@ -7,7 +7,7 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
   const [isLoading, setIsLoading] = useState(true);
   const URL = `https://api.themoviedb.org/3/movie/${movieId}`;
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-  const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
+  const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
   const [backdropImg, setBackdropImg] = useState("");
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
     <div className=" mt-4 text-nowrap text-white mx-auto">
       <div className=" w-90 mx-auto 615:w-auto 615:h-auto 615:mx-10 bg-gray-800 rounded-lg ">
         <div
-          className="1500:flex 1500:flex-row flex items-end lg:bg-cover lg:bg-center bg-right h-160 lg:h-144 rounded-lg"
+          className="1500:flex 1500:flex-row flex items-end lg:bg-cover lg:bg-center bg-right h-160 rounded-lg"
           style={{
             backgroundImage: `url(${backdropImg})`,
             backgroundSize: "cover", // or 'contain'
