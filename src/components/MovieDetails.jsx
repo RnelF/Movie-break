@@ -8,22 +8,57 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
   const URL = `https://api.themoviedb.org/3/movie/${movieId}`;
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
+  const [backdropImg, setBackdropImg] = useState("");
+
+  useEffect(() => {
+    async function fetchMovieBackdropImg() {
+      try {
+        const res = await fetch(`${URL}/images?api_key=${API_KEY}`);
+        const data = await res.json();
+        if (data.backdrops && data.backdrops.length > 0) {
+          setBackdropImg(
+            `https://image.tmdb.org/t/p/original${data.backdrops[0].file_path}`
+          );
+        } else {
+          setBackdropImg(""); // Or provide a default image URL
+        }
+      } catch (error) {
+        console.error("Error fetching movie backdrop image:", error);
+      }
+    }
+    fetchMovieBackdropImg();
+  }, [movieId]);
 
   useEffect(() => {
     async function fetchMovie() {
-      const res = await fetch(`${URL}?api_key=${API_KEY}`);
-      const data = await res.json();
-      console.log(data);
-      setMovie(data);
-      setIsLoading(false);
+      try {
+        const res = await fetch(`${URL}?api_key=${API_KEY}`);
+        const data = await res.json();
+        setMovie(data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching movie:", error);
+        setIsLoading(false);
+      }
     }
     fetchMovie();
   }, [movieId]);
   return (
     <div className=" mt-4 text-nowrap text-white mx-auto">
-      <div className=" w-90 mx-auto 615:w-auto 615:h-auto 615:mx-10 bg-gray-800 rounded-lg p-2 lg:p-5">
-        <div className="1500:flex 1500:flex-row items-center">
-          <div className="lg:flex lg:justify-start ">
+      <div className=" w-90 mx-auto 615:w-full 615:h-auto 615:mx-10 bg-gray-800 rounded-lg p-2 lg:p-5">
+        <div
+          className="1500:flex 1500:flex-row flex items-end lg:bg-cover lg:bg-center bg-right h-160 lg:h-144 rounded-lg"
+          style={{
+            backgroundImage: `url(${backdropImg})`,
+            backgroundSize: "cover", // or 'contain'
+            backgroundPosition: "center", // Default for large screens
+            "@media (max-width: 640px)": {
+              backgroundSize: "contain", // Adjust size for smaller screens
+              backgroundPosition: "top right", // Adjust position for smaller screens
+            },
+          }}
+        >
+          <div className="flex flex-row m-2 lg:flex lg:justify-start">
             <div className="w-40 h-68 mx-auto lg:mx-10 pt-4 615:w-80 615:h-auto 615:pt-8 1500:w-100">
               <img
                 className="w-full h-full rounded-sm border border-slate-300 "
@@ -32,8 +67,17 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
               />
             </div>
 
-            <div className="flex flex-col p-3 615:p-10 ">
-              <h1 className="text-lg text-wrap 615:text-5xl 1500:text-3xl">
+            <div className="flex flex-col p-3 615:p-10 justify-items-end">
+              <h1
+                className="text-lg text-wrap 615:text-5xl 1500:text-3xl"
+                style={{
+                  textShadow: `
+                  1px 1px 0 #000,
+                  -1px -1px 0 #000,
+                  1px -1px 0 #000,
+                  -1px 1px 0 #000`,
+                }}
+              >
                 {movie.original_title}
               </h1>
               <div className="mt-4 text-sm flex flex-col">
@@ -52,7 +96,16 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
                   </ul>
                 )}
               </div>
-              <div className="615:flex 615:flex-row lg:flex-col 615:justify-between lg:justify-start mt-3">
+              <div
+                className="615:flex 615:flex-row lg:flex-col 615:justify-between lg:justify-start mt-3"
+                style={{
+                  textShadow: `
+                  1px 1px 0 #000,
+                  -1px -1px 0 #000,
+                  1px -1px 0 #000,
+                  -1px 1px 0 #000`,
+                }}
+              >
                 <div className="flex flex-col mt-3 text-xs 615:text-xl">
                   <div className="mr-4">Runtime:⏳ {movie.runtime} Minutes</div>
                   <div className="mr-4">
@@ -84,38 +137,33 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
               </div>
             </div>
           </div>
-
-          <div className="mt-3 text-xs 615:text-lg 615:text-wrap ">
-            {isLoading ? (
-              <p>Loading...</p>
-            ) : (
-              movie.production_companies.length > 0 && (
-                <div className="flex flex-col 615:flex-row 615:items-center 615:mb-10">
-                  <div className="mr-5">
-                    <p>Budget: ${movie.budget.toLocaleString()}</p>
-                    <p>Revenue: ${movie.revenue.toLocaleString()}</p>
-                  </div>
-                  <div className="mr-5">
-                    <p>
-                      Origin Country:{" "}
-                      {movie.production_companies[0].origin_country}
-                    </p>
-                    <p>Company Name: {movie.production_companies[0].name}</p>
-                  </div>
-
-                  <div className="mt-3 mb-4">
-                    {movie.production_companies[0].logo_path && (
-                      <img
-                        className="w-20 p-3 615:w-28"
-                        src={`${IMAGE_BASE_URL}${movie.production_companies[0].logo_path}`}
-                        alt="No Logo Available"
-                      />
-                    )}
-                  </div>
+        </div>
+        <div className="mt-3 text-xs 615:text-lg 615:text-wrap ">
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            movie.production_companies.length > 0 && (
+              <div className="flex flex-col 615:flex-row 615:items-center 615:mb-10">
+                <div className="mr-5">
+                  <p>
+                    Origin Country:{" "}
+                    {movie.production_companies[0].origin_country}
+                  </p>
+                  <p>Company Name: {movie.production_companies[0].name}</p>
                 </div>
-              )
-            )}
-          </div>
+
+                <div className="mt-3 mb-4">
+                  {movie.production_companies[0].logo_path && (
+                    <img
+                      className="w-20 p-3 615:w-28"
+                      src={`${IMAGE_BASE_URL}${movie.production_companies[0].logo_path}`}
+                      alt="No Logo Available"
+                    />
+                  )}
+                </div>
+              </div>
+            )
+          )}
         </div>
 
         <div className="text-wrap mt-6 text-left text-xs w-11/12 615:text-lg">

@@ -40,7 +40,6 @@ function App() {
     <>
       <Nav movieId={movieId} setMovieId={setMovieId} />
       <Search
-        movieData={movieData}
         setMovieData={setMovieData}
         setIsUserSearch={setIsUserSearch}
         genreName={genreName}
@@ -48,6 +47,15 @@ function App() {
         setIsGenreActive={setIsGenreActive}
         setActorMoviesData={setActorMoviesData}
       />
+      <div ref={movieDetailsRef}>
+        {movieId && (
+          <MovieDetails
+            movieId={movieId}
+            showCasts={showCasts}
+            setShowCasts={setShowCasts}
+          />
+        )}
+      </div>
       <Genres
         setIsGenreChanged={setIsGenreChanged}
         setIsUserSearch={setIsUserSearch}
@@ -90,16 +98,6 @@ function App() {
         highRatedMovieData={highRatedMovieData}
         setMovieId={handleViewMovie}
       />
-
-      <div ref={movieDetailsRef}>
-        {movieId && (
-          <MovieDetails
-            movieId={movieId}
-            showCasts={showCasts}
-            setShowCasts={setShowCasts}
-          />
-        )}
-      </div>
     </>
   );
 }

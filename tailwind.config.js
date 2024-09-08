@@ -12,6 +12,7 @@ export default {
       },
       height: {
         144: "576px",
+        160: "650px",
       },
       screens: {
         1: "1px",

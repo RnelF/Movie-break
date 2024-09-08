@@ -6,7 +6,6 @@ const SEARCH_MOVIE_URL = "https://api.themoviedb.org/3/search/movie"; // For mov
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 export default function Search({
-  movieData,
   setMovieData,
   setIsUserSearch,
   genreName,
