@@ -38,13 +38,13 @@ export default function Genres({
   }, [genreId, setMovieData, setIsGenreChanged]);
 
   return (
-    <div className="mt-4 shadow-md shadow-slate-400">
+    <div className="mt-4 pb-3 border-4 border-transparent border-b-red-700 border-opacity-45">
       <h3 className="ml-5 mb-3 text-2xl font-semibold">Categories:</h3>
       <div className="flex flex-row flex-wrap justify-items-center gap-3 mx-5 ">
         {genres.map((genre) => (
-          <div className="mb-2 text-white" key={genre.id}>
+          <div className="mb-2" key={genre.id}>
             <button
-              className={`py-1 px-2 rounded-sm text-nowrap text-sm duration-200 ${
+              className={`py-1 px-2 rounded-sm text-nowrap text-xs 615:text-base duration-200 text-grey-900 font-semibold ${
                 genreId === genre.id && isGenreActive
                   ? " bg-red-950 text-white"
                   : "bg-red-600 hover:bg-red-950 hover:text-white"

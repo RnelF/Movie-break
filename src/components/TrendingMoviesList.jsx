@@ -36,7 +36,7 @@ export default function TrendingMoviesList({
   }, [setTrendingMovieData]);
 
   return (
-    <div className="pb-4 mx-6 relative rounded-lg">
+    <div className="pb-4 mx-2 relative rounded-lg">
       <div className="m-5">
         <h1 className="text-2xl font-semibold">Trending Now</h1>
       </div>
