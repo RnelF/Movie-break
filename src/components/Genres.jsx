@@ -42,12 +42,12 @@ export default function Genres({
       <h3 className="ml-5 mb-3 text-2xl font-semibold">Categories:</h3>
       <div className="flex flex-row flex-wrap justify-items-center gap-3 mx-5 ">
         {genres.map((genre) => (
-          <div className="mb-2" key={genre.id}>
+          <div className="mb-2 text-white" key={genre.id}>
             <button
               className={`py-1 px-2 rounded-sm text-nowrap text-sm duration-200 ${
                 genreId === genre.id && isGenreActive
-                  ? "bg-slate-600 text-white"
-                  : "bg-slate-200 hover:bg-slate-600 hover:text-white"
+                  ? " bg-red-950 text-white"
+                  : "bg-red-600 hover:bg-red-950 hover:text-white"
               }`}
               onClick={() => {
                 setGenreId(genre.id);

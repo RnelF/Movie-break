@@ -18,16 +18,6 @@
   animation: slide 0.3s ease-in-out; /* Adds a sliding animation */
 }
 
-.trending-movie-items {
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-.trending-movie-items.moving-left {
-  transform: translateX(-20px);
-  opacity: 0.8;
-}
-
-.trending-movie-items.moving-right {
-  transform: translateX(20px);
-  opacity: 0.8;
+.scroll-smooth {
+  scroll-behavior: smooth;
 }

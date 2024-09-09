@@ -16,9 +16,11 @@
 .edge-fade::before {
   left: 0;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent);
+  border-radius: 0.5rem;
 }
 
 .edge-fade::after {
   right: 0;
   background: linear-gradient(to left, rgba(0, 0, 0, 0.1), transparent);
+  border-radius: 0.5rem;
 }
