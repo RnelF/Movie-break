@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import TrendingMovieItems from "./TrendingMovieItems.jsx";
 import TrendingMovieListWithPagination from "./TrendingMovieListWithPagination.jsx";
 import "../custom-scrollbars.css";
-import ArrowLeft from "../images/ArrowLeft.png";
-import ArrowRight from "../images/ArrowRight.png";
 import "../custom_css/sliderAnimation.css";
 
 const URL = "https://api.themoviedb.org/3/trending/movie/week";
