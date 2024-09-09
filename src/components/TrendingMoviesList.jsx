@@ -42,7 +42,7 @@ export default function TrendingMoviesList({
       {/* Movie List */}
       <div
         ref={listTopRef}
-        className="mt-5 flex flex-row overflow-auto gap-3 scrollable-container"
+        className="mt-5 flex flex-row overflow-y-hidden gap-3 scrollable-container"
       >
         {trendingMovieData.map((movie) => (
           <TrendingMovieItems

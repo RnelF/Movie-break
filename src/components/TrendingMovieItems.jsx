@@ -9,7 +9,7 @@ export default function TrendingMovieItems({ movie, setMovieId }) {
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
     >
-      <div className="w-32 500:w-40 615:w-40 h-auto">
+      <div className="w-32 500:w-40 615:w-40 h-auto ">
         <img
           className="relative w-full rounded-lg cursor-pointer"
           src={`${IMAGE_BASE_URL}${movie.poster_path}`}
@@ -19,7 +19,7 @@ export default function TrendingMovieItems({ movie, setMovieId }) {
           className={`absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 rounded-lg transition-transform duration-300 ${
             showTooltip ? "translate-y-0" : "translate-y-full"
           }`}
-          style={{ top: 0, left: 0 }}
+          style={{ top: 0, left: 0, zIndex: 20 }}
         >
           <div className="text-sm 500:text-lg text-gray-200 font-semibold text-center">
             <h1>{movie.original_title}</h1>
