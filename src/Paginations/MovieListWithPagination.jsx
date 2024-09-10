@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import ArrowLeft from "../icons/ArrowLeft.png";
+import ArrowRight from "../icons/ArrowRight.png";
 
 export default function MovieListWithPagination({
   genreId,
@@ -36,18 +38,18 @@ export default function MovieListWithPagination({
     <div>
       <div className="mt-4 flex justify-center gap-4">
         <button
-          className="bg-gray-300 py-1 px-3 rounded hover:bg-gray-500 hover:text-white"
+          className="bg-red-600 py-1 px-3 rounded hover:bg-red-400"
           onClick={() => setPage((prevPage) => Math.max(prevPage - 1, 1))}
           disabled={page === 1} // Disable "Previous" button on the first page
         >
-          Previous
+          <img className="w-2" src={ArrowLeft} />
         </button>
-        <span>Page {page}</span>
+        <span className="text-base font-semibold">{page}</span>
         <button
-          className="bg-gray-300 py-1 px-3 rounded hover:bg-gray-500 hover:text-white"
+          className="bg-red-600 py-1 px-3 rounded hover:bg-red-400"
           onClick={() => setPage((prevPage) => prevPage + 1)}
         >
-          Next
+          <img className="w-2" src={ArrowRight} />
         </button>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import TrendingMovieItems from "./TrendingMovieItems.jsx";
-import TrendingMovieListWithPagination from "./TrendingMovieListWithPagination.jsx";
+import TrendingMovieListWithPagination from "../Paginations/TrendingMovieListWithPagination.jsx";
 import "../custom-scrollbars.css";
 
 const URL = "https://api.themoviedb.org/3/trending/movie/week";

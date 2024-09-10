@@ -42,20 +42,24 @@ export default function TrendingMovieItems({ movie, setMovieId }) {
                     2px 2px 4px rgba(0, 0, 0, 1)`,
                   }}
                 >
-                  {parseInt(movie.vote_average).toLocaleString()}
+                  {movie.vote_average}
                 </div>
               </div>
             </div>
 
             <div
-              className="text-base"
+              className="text-sm"
               style={{
                 textShadow: `
                     1px 2px 2px rgba(0, 0, 0, 1),  /* Dark shadow to ensure readability */
                     2px 2px 4px rgba(0, 0, 0, 1)`,
               }}
             >
-              <h1>{movie.original_title}</h1>
+              <h1>
+                {movie.original_title.length > 30
+                  ? `${movie.original_title.slice(0, 35)}...`
+                  : movie.original_title}
+              </h1>
             </div>
             <div>
               <button
@@ -63,6 +67,7 @@ export default function TrendingMovieItems({ movie, setMovieId }) {
                 onClick={(e) => {
                   e.stopPropagation();
                   setMovieId(movie.id);
+                  setShowCasts(false);
                 }}
               >
                 View

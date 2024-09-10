@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import HighRatedMovieItems from "./HighRatedMovieItems";
-import HighRatedMovieListWithPagination from "./HighRatedMovieListWithPagination.jsx";
+import HighRatedMovieListWithPagination from "../Paginations/HighRatedMovieListWithPagination.jsx";
 import "../custom-scrollbars.css";
 
 const URL = "https://api.themoviedb.org/3/movie/top_rated";

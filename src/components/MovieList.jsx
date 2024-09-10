@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import MovieItem from "./MovieItem.jsx";
-import MovieListWithPagination from "./MovieListWithPagination.jsx";
+import MovieListWithPagination from "../Paginations/MovieListWithPagination.jsx";
 import "../custom-scrollbars.css";
 
 export default function MovieList({
@@ -27,15 +27,15 @@ export default function MovieList({
   };
 
   return (
-    <div>
+    <div className="pb-4 mx-2 relative rounded-lg">
       <div className="m-5">
-        <h1 className="text-2xl font-semibold">
+        <h1 className="text-2xl text-gray-200 font-semibold">
           {genreName ? `${genreName} Films` : ""}
         </h1>
       </div>
       <div
         ref={listTopRef}
-        className="scrollable-container mt-5 flex flex-row overflow-auto gap-3"
+        className="mt-5 flex flex-row overflow-y-hidden gap-3 scrollable-container"
       >
         {actorMoviesData.map((movie) => (
           <MovieItem

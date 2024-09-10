@@ -2,7 +2,6 @@ import { useState, useRef } from "react";
 
 import Nav from "./components/Nav";
 import MovieDetails from "./components/MovieDetails";
-import MovieCasts from "./components/MovieCasts";
 import Search from "./components/Search";
 import MovieList from "./components/MovieList";
 import Genres from "./components/Genres";

@@ -1,29 +1,79 @@
+import { useEffect, useState } from "react";
+import MovieRating from "../icons/movie-rating.png";
 export default function MovieItem({ movie, setMovieId, setShowCasts }) {
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
+  const [showTooltip, setShowTooltip] = useState(false);
   return (
-    <div className="w-40 500:w-48 615:w-48 bg-black bg-opacity-60 flex flex-col justify-start items-center p-3 gap-2 mb-2 rounded-lg">
-      <div>
-        <button
-          onClick={() => {
-            setMovieId(movie.id);
-            setShowCasts(false);
-          }}
-          className="bg-red-600 text-gray-200 font-semibold p-1 rounded-sm 500:text-lg 615:text-sm hover:text-gray-900 hover:bg-red-500  duration-200"
-        >
-          View Movie
-        </button>
-      </div>
-      <div className="w-32 500:w-40 615:w-40 h-auto">
+    <div
+      className="relative w-32 500:w-48 615:w-48 bg-black bg-opacity-60 rounded-lg mb-2"
+      onMouseEnter={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}
+    >
+      <div className="w-32 500:w-40 615:w-40 h-auto ">
         <img
-          className="w-full rounded-lg"
+          className="relative w-full rounded-lg cursor-pointer"
           src={`${IMAGE_BASE_URL}${movie.poster_path}`}
           alt="Poster Unavailable"
         />
-      </div>
-      <div>
-        <h1 className="text-base text-wrap font-semibold 500:text-xl 615:text-xl text-gray-200">
-          {movie.original_title}
-        </h1>
+        <div
+          className={`absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 rounded-lg transition-transform duration-300 ${
+            showTooltip ? "translate-y-0" : "-translate-y-full"
+          }`}
+          style={{
+            top: 0,
+            left: 0,
+            zIndex: 20,
+          }}
+        >
+          <div className="text-sm 500:text-lg text-gray-200 font-semibold text-center flex flex-col gap-4">
+            <div>
+              <div className="text-xs mb-2">
+                <p>Tmdb Rating</p>
+              </div>
+              <div className="text-xs flex gap-1 justify-center">
+                <div>
+                  <img className="w-4" src={MovieRating} />
+                </div>
+                <div
+                  style={{
+                    textShadow: `
+                    1px 2px 2px rgba(0, 0, 0, 1),  /* Dark shadow to ensure readability */
+                    2px 2px 4px rgba(0, 0, 0, 1)`,
+                  }}
+                >
+                  {movie.vote_average}
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="text-sm"
+              style={{
+                textShadow: `
+                    1px 2px 2px rgba(0, 0, 0, 1),  /* Dark shadow to ensure readability */
+                    2px 2px 4px rgba(0, 0, 0, 1)`,
+              }}
+            >
+              <h1>
+                {movie.original_title.length > 30
+                  ? `${movie.original_title.slice(0, 35)}...`
+                  : movie.original_title}
+              </h1>
+            </div>
+            <div>
+              <button
+                className="bg-red-700 text-white px-2 py-1 rounded mt-2"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMovieId(movie.id);
+                  setShowCasts(false);
+                }}
+              >
+                View
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
