@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import TrendingMovieItems from "./TrendingMovieItems.jsx";
 import TrendingMovieListWithPagination from "./TrendingMovieListWithPagination.jsx";
 import "../custom-scrollbars.css";
-import "../custom_css/sliderAnimation.css";
 
 const URL = "https://api.themoviedb.org/3/trending/movie/week";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;

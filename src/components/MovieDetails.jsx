@@ -50,12 +50,8 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
           className="1500:flex 1500:flex-row flex items-end lg:bg-cover lg:bg-center bg-right h-160 rounded-lg"
           style={{
             backgroundImage: `url(${backdropImg})`,
-            backgroundSize: "cover", // or 'contain'
-            backgroundPosition: "center", // Default for large screens
-            "@media (max-width: 640px)": {
-              backgroundSize: "contain", // Adjust size for smaller screens
-              backgroundPosition: "top right", // Adjust position for smaller screens
-            },
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         >
           <div className="flex m-2 justify-start">
@@ -117,7 +113,7 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
                   <p>
                     Popularity:{" "}
                     <span className=" ml-1 font-semibold text-md">
-                      🔥{movie.popularity}
+                      🔥{parseInt(movie.popularity).toLocaleString()}
                     </span>
                   </p>
                   <p className="mt-1">
@@ -129,7 +125,7 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
                   <p className="mt-1">
                     TmDB Votes:{" "}
                     <span className=" ml-1 font-semibold text-md">
-                      👥{movie.vote_count}
+                      👥{parseInt(movie.vote_count).toLocaleString()}
                     </span>
                   </p>
                 </div>

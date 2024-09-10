@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import ArrowLeft from "../images/ArrowLeft.png";
-import ArrowRight from "../images/ArrowRight.png";
+import ArrowLeft from "../icons/ArrowLeft.png";
+import ArrowRight from "../icons/ArrowRight.png";
 
 export default function TrendingMovieListWithPagination({
   onPageChange,
