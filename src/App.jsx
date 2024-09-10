@@ -21,7 +21,6 @@ function App() {
   const [genreName, setGenreName] = useState("");
   const [isGenreActive, setIsGenreActive] = useState(false);
   const [popularMovieData, setPopularMovieData] = useState([]);
-  const [movieIdFromPopular, setmovieIdFromPopular] = useState([]);
   const [highRatedMovieData, setHighRatedMovieData] = useState([]);
   const [trendingMovieData, setTrendingMovieData] = useState([]);
   const [actorMoviesData, setActorMoviesData] = useState([]);
@@ -91,7 +90,6 @@ function App() {
         setMovieId={handleViewMovie}
         setPopularMovieData={setPopularMovieData}
         popularMovieData={popularMovieData}
-        setmovieIdFromPopular={setmovieIdFromPopular}
       />
       <HighestRatedMoviesList
         setHighRatedMovieData={setHighRatedMovieData}

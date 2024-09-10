@@ -1,5 +1,6 @@
 import PopularMovieItems from "./PopularMovieItems";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import PopularMoviesPagination from "../Paginations/PopularMoviesPagination";
 import "../custom-scrollbars.css";
 
 const URL = "https://api.themoviedb.org/3/movie/popular";
@@ -9,28 +10,38 @@ export default function PopularMoviesList({
   setMovieId,
   popularMovieData,
   setPopularMovieData,
-  setmovieIdFromPopular,
 }) {
+  const listTopRef = useRef(null);
+
+  const handlePageChange = () => {
+    if (listTopRef.current) {
+      listTopRef.current.scroll({
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
   useEffect(() => {
     async function fetchPopularMoviesData() {
       const res = await fetch(`${URL}?api_key=${API_KEY}&page=1`);
       const data = await res.json();
       setPopularMovieData(data.results);
-
-      if (data.results.length > 0) {
-        setmovieIdFromPopular(data.results[0].id);
-      }
     }
 
     fetchPopularMoviesData();
-  }, [setPopularMovieData, setmovieIdFromPopular]);
+  }, [setPopularMovieData]);
 
   return (
-    <div className="pb-4">
+    <div className="pb-4 mx-2 relative rounded-lg">
       <div className="m-5">
-        <h1 className="text-2xl font-semibold">Popular Now</h1>
+        <h1 className="text-2xl text-gray-200 font-semibold">Popular Now</h1>
       </div>
-      <div className="scrollable-container mt-5 flex flex-row overflow-auto gap-3">
+
+      <div
+        ref={listTopRef}
+        className="mt-5 flex flex-row overflow-y-hidden gap-3 scrollable-container"
+      >
         {popularMovieData.map((movie) => (
           <PopularMovieItems
             key={movie.id}
@@ -38,6 +49,14 @@ export default function PopularMoviesList({
             setMovieId={setMovieId}
           />
         ))}
+      </div>
+      <div>
+        {popularMovieData.length > 0 && (
+          <PopularMoviesPagination
+            onPageChange={handlePageChange}
+            setPopularMovieData={setPopularMovieData}
+          />
+        )}
       </div>
     </div>
   );
