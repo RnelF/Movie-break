@@ -28,6 +28,7 @@ export default function TrendingMoviesList({
       const res = await fetch(`${URL}?api_key=${API_KEY}&page=1`);
       const data = await res.json();
       setTrendingMovieData(data.results);
+      console.log(data.results);
     }
 
     fetchTrendingMoviesData();
@@ -36,7 +37,7 @@ export default function TrendingMoviesList({
   return (
     <div className="pb-4 mx-2 relative rounded-lg">
       <div className="m-5">
-        <h1 className="text-2xl font-semibold">Trending Now</h1>
+        <h1 className="text-2xl text-gray-200 font-semibold">Trending Now</h1>
       </div>
 
       {/* Movie List */}

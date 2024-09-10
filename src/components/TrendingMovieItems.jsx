@@ -17,21 +17,53 @@ export default function TrendingMovieItems({ movie, setMovieId }) {
         />
         <div
           className={`absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 rounded-lg transition-transform duration-300 ${
-            showTooltip ? "translate-y-0" : "translate-y-full"
+            showTooltip ? "translate-y-0" : "-translate-y-full"
           }`}
-          style={{ top: 0, left: 0, zIndex: 20 }}
+          style={{
+            top: 0,
+            left: 0,
+            zIndex: 20,
+          }}
         >
-          <div className="text-sm 500:text-lg text-gray-200 font-semibold text-center">
-            <h1>{movie.original_title}</h1>
-            <button
-              className="bg-red-700 text-white px-2 py-1 rounded mt-2"
-              onClick={(e) => {
-                e.stopPropagation();
-                setMovieId(movie.id);
+          <div className="text-sm 500:text-lg text-gray-200 font-semibold text-center flex flex-col gap-4">
+            <div>
+              <div className="text-xs">
+                <p>Tmdb Rating</p>
+              </div>
+              <div className="text-xs">
+                <div
+                  style={{
+                    textShadow: `
+                    1px 2px 2px rgba(0, 0, 0, 1),  /* Dark shadow to ensure readability */
+                    2px 2px 4px rgba(0, 0, 0, 1)`,
+                  }}
+                >
+                  ⭐{movie.vote_average}
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="text-base"
+              style={{
+                textShadow: `
+                    1px 2px 2px rgba(0, 0, 0, 1),  /* Dark shadow to ensure readability */
+                    2px 2px 4px rgba(0, 0, 0, 1)`,
               }}
             >
-              View
-            </button>
+              <h1>{movie.original_title}</h1>
+            </div>
+            <div>
+              <button
+                className="bg-red-700 text-white px-2 py-1 rounded mt-2"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMovieId(movie.id);
+                }}
+              >
+                View
+              </button>
+            </div>
           </div>
         </div>
       </div>
