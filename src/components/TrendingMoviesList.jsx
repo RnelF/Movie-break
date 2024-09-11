@@ -39,7 +39,6 @@ export default function TrendingMoviesList({
         <h1 className="text-2xl text-gray-200 font-semibold">Trending Now</h1>
       </div>
 
-      {/* Movie List */}
       <div
         ref={listTopRef}
         className="mt-5 flex flex-row overflow-y-hidden gap-3 scrollable-container"

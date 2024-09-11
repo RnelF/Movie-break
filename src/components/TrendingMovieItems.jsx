@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import MovieRating from "../icons/movie-rating.png";
+import MovieRatingIcon from "../icons/movie-rating.png";
+import MoviePopularityIcon from "../icons/movie-popularity.png";
 
 export default function TrendingMovieItems({ movie, setMovieId }) {
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
@@ -27,13 +28,25 @@ export default function TrendingMovieItems({ movie, setMovieId }) {
           }}
         >
           <div className="text-sm 500:text-lg text-gray-200 font-semibold text-center flex flex-col gap-4">
-            <div>
-              <div className="text-xs mb-2">
-                <p>Tmdb Rating</p>
+            <div className="flex justify-center gap-2">
+              <div className="text-xs flex justify-center">
+                <div className="mr-1">
+                  <img className="w-4" src={MovieRatingIcon} />
+                </div>
+
+                <div
+                  style={{
+                    textShadow: `
+                    1px 2px 2px rgba(0, 0, 0, 1),  /* Dark shadow to ensure readability */
+                    2px 2px 4px rgba(0, 0, 0, 1)`,
+                  }}
+                >
+                  {movie.vote_average.toFixed(1)}
+                </div>
               </div>
-              <div className="text-xs flex gap-1 justify-center">
-                <div>
-                  <img className="w-4" src={MovieRating} />
+              <div className="text-xs flex justify-center">
+                <div className="mr-1">
+                  <img className="w-4" src={MoviePopularityIcon} />
                 </div>
                 <div
                   style={{
@@ -42,7 +55,7 @@ export default function TrendingMovieItems({ movie, setMovieId }) {
                     2px 2px 4px rgba(0, 0, 0, 1)`,
                   }}
                 >
-                  {movie.vote_average}
+                  {parseInt(movie.popularity).toLocaleString()}
                 </div>
               </div>
             </div>
