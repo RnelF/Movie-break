@@ -8,6 +8,7 @@ import Genres from "./components/Genres";
 import PopularMoviesList from "./components/PopularMoviesList";
 import HighestRatedMoviesList from "./components/HighestRatedMoviesList";
 import TrendingMoviesList from "./components/TrendingMoviesList";
+import PopularFilMoviesNowList from "./components/PopularFilMoviesNowList";
 
 function App() {
   const [movieData, setMovieData] = useState([]);
@@ -23,6 +24,7 @@ function App() {
   const [highRatedMovieData, setHighRatedMovieData] = useState([]);
   const [trendingMovieData, setTrendingMovieData] = useState([]);
   const [actorMoviesData, setActorMoviesData] = useState([]);
+  const [filMoviesData, setfilMoviesData] = useState([]);
 
   const movieDetailsRef = useRef(null);
 
@@ -82,6 +84,11 @@ function App() {
       <TrendingMoviesList
         setTrendingMovieData={setTrendingMovieData}
         trendingMovieData={trendingMovieData}
+        setMovieId={handleViewMovie}
+      />
+      <PopularFilMoviesNowList
+        setfilMoviesData={setfilMoviesData}
+        filMoviesData={filMoviesData}
         setMovieId={handleViewMovie}
       />
 

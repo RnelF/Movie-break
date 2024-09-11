@@ -33,10 +33,10 @@ export default function HighestRatedMoviesList({
   }, [setHighRatedMovieData]);
 
   return (
-    <div className="pb-4 mx-2 relative rounded-lg">
+    <div className="pb-4 mx-4 615:mx-8 lg:mx-12 relative rounded-lg">
       <div className="m-5">
         <h1 className="text-2xl text-gray-200 font-semibold">
-          High Rated Movies
+          Top Rated Movies
         </h1>
       </div>
 

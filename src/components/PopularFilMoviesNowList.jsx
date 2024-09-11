@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import TrendingMovieItems from "./TrendingMovieItems.jsx";
-import TrendingMovieListWithPagination from "../Paginations/TrendingMovieListWithPagination.jsx";
+import PopularFilMoviesNowItems from "./PopularFilMoviesNowItems.jsx";
+import PopularFilMoviesNowPagination from "../Paginations/PopularFilMoviesNowPagination.jsx";
 import "../custom-scrollbars.css";
 
-const URL = "https://api.themoviedb.org/3/trending/movie/week";
+const URL = "https://api.themoviedb.org/3/discover/movie";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
-export default function TrendingMoviesList({
-  setTrendingMovieData,
-  trendingMovieData,
+export default function PopularFilMoviesNowList({
+  setfilMoviesData,
+  filMoviesData,
   setMovieId,
 }) {
   const listTopRef = useRef(null);
@@ -23,28 +23,32 @@ export default function TrendingMoviesList({
   };
 
   useEffect(() => {
-    async function fetchTrendingMoviesData() {
-      const res = await fetch(`${URL}?api_key=${API_KEY}&page=1`);
+    async function fetchFilMoviesData() {
+      const res = await fetch(
+        `${URL}?api_key=${API_KEY}&with_original_language=tl&primary_release_year=2024&sort_by=popularity.desc&page=1`
+      );
       const data = await res.json();
-      setTrendingMovieData(data.results);
+      setfilMoviesData(data.results);
       console.log(data.results);
     }
 
-    fetchTrendingMoviesData();
-  }, [setTrendingMovieData]);
+    fetchFilMoviesData();
+  }, [setfilMoviesData]);
 
   return (
     <div className="pb-4 mx-4 615:mx-8 lg:mx-12 relative rounded-lg">
       <div className="m-5">
-        <h1 className="text-2xl text-gray-200 font-semibold">Trending Now</h1>
+        <h1 className="text-2xl text-gray-200 font-semibold">
+          Popular Filipino Movies on Tmdb Now
+        </h1>
       </div>
 
       <div
         ref={listTopRef}
         className="mt-5 flex flex-row overflow-y-hidden gap-3 scrollable-container"
       >
-        {trendingMovieData.map((movie) => (
-          <TrendingMovieItems
+        {filMoviesData.map((movie) => (
+          <PopularFilMoviesNowItems
             key={movie.id}
             movie={movie}
             setMovieId={setMovieId}
@@ -54,10 +58,10 @@ export default function TrendingMoviesList({
 
       {/* Pagination */}
       <div>
-        {trendingMovieData.length > 0 && (
-          <TrendingMovieListWithPagination
+        {filMoviesData.length > 0 && (
+          <PopularFilMoviesNowPagination
             onPageChange={handlePageChange}
-            setTrendingMovieData={setTrendingMovieData}
+            setfilMoviesData={setfilMoviesData}
           />
         )}
       </div>
