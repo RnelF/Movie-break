@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import moviePopularityIcon from "../icons/movie-popularity.png";
 
-export default function PopularMovieItems({ movie, setMovieId }) {
+export default function PopularMovieItems({ movie, setMovieId, setShowCasts }) {
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
   const [showTooltip, setShowTooltip] = useState(false);
   return (
@@ -63,6 +63,7 @@ export default function PopularMovieItems({ movie, setMovieId }) {
                 onClick={(e) => {
                   e.stopPropagation();
                   setMovieId(movie.id);
+                  setShowCasts(false);
                 }}
               >
                 View

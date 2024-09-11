@@ -10,6 +10,7 @@ export default function TrendingMoviesList({
   setTrendingMovieData,
   trendingMovieData,
   setMovieId,
+  setShowCasts,
 }) {
   const listTopRef = useRef(null);
 
@@ -48,6 +49,7 @@ export default function TrendingMoviesList({
             key={movie.id}
             movie={movie}
             setMovieId={setMovieId}
+            setShowCasts={setShowCasts}
           />
         ))}
       </div>

@@ -10,6 +10,7 @@ export default function HighestRatedMoviesList({
   setHighRatedMovieData,
   highRatedMovieData,
   setMovieId,
+  setShowCasts,
 }) {
   const listTopRef = useRef(null);
 
@@ -49,6 +50,7 @@ export default function HighestRatedMoviesList({
             key={movie.id}
             movie={movie}
             setMovieId={setMovieId}
+            setShowCasts={setShowCasts}
           />
         ))}
       </div>

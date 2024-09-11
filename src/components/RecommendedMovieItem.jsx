@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import MovieRatingIcon from "../icons/movie-rating.png";
-import MoviePopularityIcon from "../icons/movie-popularity.png";
-
-export default function PopularFilMoviesNowItems({
+import ThumbsUpIcon from "../icons/thumbs-up.png";
+export default function RecommendedMovieItem({
   movie,
   setMovieId,
   setShowCasts,
@@ -11,11 +10,11 @@ export default function PopularFilMoviesNowItems({
   const [showTooltip, setShowTooltip] = useState(false);
   return (
     <div
-      className="relative w-32 500:w-48 615:w-48 bg-black bg-opacity-60 rounded-lg mb-2"
+      className="relative w-24 500:w-40 bg-black bg-opacity-60 rounded-lg mb-2"
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
     >
-      <div className="w-32 500:w-40 615:w-40 h-auto ">
+      <div className="w-24 500:w-32 h-auto">
         <img
           className="relative w-full rounded-lg cursor-pointer"
           src={`${IMAGE_BASE_URL}${movie.poster_path}`}
@@ -31,13 +30,12 @@ export default function PopularFilMoviesNowItems({
             zIndex: 20,
           }}
         >
-          <div className="text-sm 500:text-lg text-gray-200 font-semibold text-center flex flex-col gap-4">
-            <div className="flex justify-center gap-2">
-              <div className="text-xs flex justify-center">
-                <div className="mr-1">
-                  <img className="w-4" src={MovieRatingIcon} />
+          <div className="text-sm 500:text-lg text-gray-200 font-semibold text-center flex flex-col">
+            <div className="flex flex-col justify-center items-center">
+              <div className="text-11 flex justify-center ">
+                <div>
+                  <img className="w-3" src={MovieRatingIcon} />
                 </div>
-
                 <div
                   style={{
                     textShadow: `
@@ -48,10 +46,11 @@ export default function PopularFilMoviesNowItems({
                   {movie.vote_average.toFixed(1)}
                 </div>
               </div>
-              <div className="text-xs flex justify-center">
-                <div className="mr-1">
-                  <img className="w-4" src={MoviePopularityIcon} />
+              <div className="text-11 flex">
+                <div>
+                  <img className="w-3" src={ThumbsUpIcon} />
                 </div>
+
                 <div
                   style={{
                     textShadow: `
@@ -59,13 +58,13 @@ export default function PopularFilMoviesNowItems({
                     2px 2px 4px rgba(0, 0, 0, 1)`,
                   }}
                 >
-                  {parseInt(movie.popularity).toLocaleString()}
+                  {movie.vote_count.toLocaleString()}
                 </div>
               </div>
             </div>
 
             <div
-              className="text-sm"
+              className="text-sm text-wrap"
               style={{
                 textShadow: `
                     1px 2px 2px rgba(0, 0, 0, 1),  /* Dark shadow to ensure readability */
@@ -80,7 +79,7 @@ export default function PopularFilMoviesNowItems({
             </div>
             <div>
               <button
-                className="bg-red-700 text-white px-2 py-1 rounded mt-2"
+                className="bg-red-700 text-white text-xs px-1 py-1 rounded mt-2"
                 onClick={(e) => {
                   e.stopPropagation();
                   setMovieId(movie.id);

@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import MovieRatingIcon from "../icons/movie-rating.png";
 import ThumbsUpIcon from "../icons/thumbs-up.png";
 
-export default function HighRatedMovieItems({ movie, setMovieId }) {
+export default function HighRatedMovieItems({
+  movie,
+  setMovieId,
+  setShowCasts,
+}) {
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
   const [showTooltip, setShowTooltip] = useState(false);
   return (

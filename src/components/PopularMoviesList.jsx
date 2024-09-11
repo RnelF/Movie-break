@@ -10,6 +10,7 @@ export default function PopularMoviesList({
   setMovieId,
   popularMovieData,
   setPopularMovieData,
+  setShowCasts,
 }) {
   const listTopRef = useRef(null);
 
@@ -55,6 +56,7 @@ export default function PopularMoviesList({
           <PopularMoviesPagination
             onPageChange={handlePageChange}
             setPopularMovieData={setPopularMovieData}
+            setShowCasts={setShowCasts}
           />
         )}
       </div>

@@ -77,6 +77,7 @@ function App() {
             movieId={movieId}
             showCasts={showCasts}
             setShowCasts={setShowCasts}
+            setMovieId={handleViewMovie}
           />
         )}
       </div>
@@ -85,22 +86,26 @@ function App() {
         setTrendingMovieData={setTrendingMovieData}
         trendingMovieData={trendingMovieData}
         setMovieId={handleViewMovie}
+        setShowCasts={setShowCasts}
       />
       <PopularFilMoviesNowList
         setfilMoviesData={setfilMoviesData}
         filMoviesData={filMoviesData}
         setMovieId={handleViewMovie}
+        setShowCasts={setShowCasts}
       />
 
       <PopularMoviesList
         setMovieId={handleViewMovie}
         setPopularMovieData={setPopularMovieData}
         popularMovieData={popularMovieData}
+        setShowCasts={setShowCasts}
       />
       <HighestRatedMoviesList
         setHighRatedMovieData={setHighRatedMovieData}
         highRatedMovieData={highRatedMovieData}
         setMovieId={handleViewMovie}
+        setShowCasts={setShowCasts}
       />
     </>
   );

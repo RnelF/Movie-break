@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import MovieRatingIcon from "../icons/movie-rating.png";
 import MoviePopularityIcon from "../icons/movie-popularity.png";
 
-export default function TrendingMovieItems({ movie, setMovieId }) {
+export default function TrendingMovieItems({
+  movie,
+  setMovieId,
+  setShowCasts,
+}) {
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
   const [showTooltip, setShowTooltip] = useState(false);
   return (

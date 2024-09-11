@@ -1,14 +1,23 @@
 import { useEffect, useState } from "react";
 import MovieCasts from "./MovieCasts";
 import MovieStaffs from "./MovieStaffs";
+import RecommendedMovieList from "./RecommendedMovieList";
 
-export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
+export default function MovieDetails({
+  movieId,
+  showCasts,
+  setShowCasts,
+  setMovieId,
+}) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [recommendedMovieData, setRecommendedMovieData] = useState([]);
+  const [backdropImg, setBackdropImg] = useState("");
+
   const URL = `https://api.themoviedb.org/3/movie/${movieId}`;
+  const recommendedMovieURL = `https://api.themoviedb.org/3/movie/${movieId}/recommendations`;
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
-  const [backdropImg, setBackdropImg] = useState("");
 
   useEffect(() => {
     async function fetchMovieBackdropImg() {
@@ -29,6 +38,16 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
     fetchMovieBackdropImg();
   }, [movieId]);
 
+  async function fetchRecommendedMovie() {
+    try {
+      const res = await fetch(`${recommendedMovieURL}?api_key=${API_KEY}`);
+      const data = await res.json();
+      setRecommendedMovieData(data.results);
+    } catch (error) {
+      console.error("Error fetching movie:", error);
+    }
+  }
+
   useEffect(() => {
     async function fetchMovie() {
       try {
@@ -41,6 +60,7 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
         setIsLoading(false);
       }
     }
+    fetchRecommendedMovie();
     fetchMovie();
   }, [movieId]);
   return (
@@ -174,6 +194,13 @@ export default function MovieDetails({ movieId, showCasts, setShowCasts }) {
           <MovieCasts
             movieId={movieId}
             showCasts={showCasts}
+            setShowCasts={setShowCasts}
+          />
+        </div>
+        <div>
+          <RecommendedMovieList
+            recommendedMovieData={recommendedMovieData}
+            setMovieId={setMovieId}
             setShowCasts={setShowCasts}
           />
         </div>

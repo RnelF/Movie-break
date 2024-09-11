@@ -10,6 +10,7 @@ export default function PopularFilMoviesNowList({
   setfilMoviesData,
   filMoviesData,
   setMovieId,
+  setShowCasts,
 }) {
   const listTopRef = useRef(null);
 
@@ -62,6 +63,7 @@ export default function PopularFilMoviesNowList({
           <PopularFilMoviesNowPagination
             onPageChange={handlePageChange}
             setfilMoviesData={setfilMoviesData}
+            setShowCasts={setShowCasts}
           />
         )}
       </div>
