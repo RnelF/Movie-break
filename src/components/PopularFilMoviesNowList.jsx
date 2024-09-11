@@ -53,6 +53,7 @@ export default function PopularFilMoviesNowList({
             key={movie.id}
             movie={movie}
             setMovieId={setMovieId}
+            setShowCasts={setShowCasts}
           />
         ))}
       </div>
@@ -63,7 +64,6 @@ export default function PopularFilMoviesNowList({
           <PopularFilMoviesNowPagination
             onPageChange={handlePageChange}
             setfilMoviesData={setfilMoviesData}
-            setShowCasts={setShowCasts}
           />
         )}
       </div>

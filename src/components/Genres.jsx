@@ -39,7 +39,9 @@ export default function Genres({
 
   return (
     <div className="mt-4 pb-3 border-4 border-transparent border-b-red-700 border-opacity-45">
-      <h3 className="ml-5 mb-3 text-2xl font-semibold">Categories:</h3>
+      <h3 className="ml-5 mb-3 text-2xl text-gray-200 font-semibold">
+        Categories:
+      </h3>
       <div className="flex flex-row flex-wrap justify-items-center gap-3 mx-5 ">
         {genres.map((genre) => (
           <div className="mb-2" key={genre.id}>

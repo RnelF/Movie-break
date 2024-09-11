@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import YouTube from "react-youtube";
 import MovieCasts from "./MovieCasts";
 import MovieStaffs from "./MovieStaffs";
 import RecommendedMovieList from "./RecommendedMovieList";
@@ -13,6 +14,7 @@ export default function MovieDetails({
   const [isLoading, setIsLoading] = useState(true);
   const [recommendedMovieData, setRecommendedMovieData] = useState([]);
   const [backdropImg, setBackdropImg] = useState("");
+  const [movieTrailer, setMovieTrailer] = useState("");
 
   const URL = `https://api.themoviedb.org/3/movie/${movieId}`;
   const recommendedMovieURL = `https://api.themoviedb.org/3/movie/${movieId}/recommendations`;
@@ -48,6 +50,20 @@ export default function MovieDetails({
     }
   }
 
+  async function fetchMovieTrailers() {
+    try {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}`
+      );
+      const data = await res.json();
+      if (data.results.length > 0) {
+        setMovieTrailer(data.results[0].key); // Get the first trailer key
+      }
+    } catch (error) {
+      console.error("Error fetching movie trailers:", error);
+    }
+  }
+
   useEffect(() => {
     async function fetchMovie() {
       try {
@@ -61,8 +77,17 @@ export default function MovieDetails({
       }
     }
     fetchRecommendedMovie();
+    fetchMovieTrailers();
     fetchMovie();
   }, [movieId]);
+
+  const opts = {
+    height: "100%",
+    width: "100%",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
   return (
     <div className=" mt-4 text-nowrap text-white mx-auto ">
       <div className=" w-90 mx-auto 615:w-auto 615:h-auto 615:mx-10  rounded-lg bg-gradient-to-b from-dark-start via-dark-middle to-dark-end min-h-screen">
@@ -151,6 +176,15 @@ export default function MovieDetails({
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="mt-2  w-full max-w-3xl mx-auto px-4">
+          <div className="relative pt-[56.25%]">
+            <YouTube
+              videoId={movieTrailer}
+              opts={opts}
+              className="absolute top-0 left-0 w-full h-full rounded-md"
+            />
           </div>
         </div>
         <div className="mt-3 text-xs 615:text-lg 615:text-wrap pl-3">
