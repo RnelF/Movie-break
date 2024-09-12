@@ -231,6 +231,8 @@ export default function MovieDetails({
             showCasts={showCasts}
             setShowCasts={setShowCasts}
             setPersonDetails={setPersonDetails}
+            setMovieId={setMovieId}
+            setShowCasts={setShowCasts}
           />
         </div>
         <div>

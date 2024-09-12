@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
+import PersonMovieItems from "./PersonMovieItems";
 
-export default function PersonDetailsComponent({ personDetails }) {
+export default function PersonDetailsComponent({
+  personDetails,
+  setMovieId,
+  setShowCasts,
+}) {
   const URL = "https://api.themoviedb.org/3/search/person";
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -38,42 +43,56 @@ export default function PersonDetailsComponent({ personDetails }) {
   }, [personDetails]);
 
   return (
-    <div>
+    <div className="mx-auto flex justify-center bg-gradient-to-b from-burgundy-900 via-red-900 to-dark-end">
       {personDetails ? (
         isLoading ? (
           <p>Loading . . . </p>
         ) : personData ? (
-          <div key={personData.id}>
-            <div>
+          <div key={personData.id} className="flex flex-col gap-2 mx-auto">
+            <div className="w-60 mx-auto">
               {personData.profile_path ? (
                 <img
+                  className="w-full rounded-lg"
                   src={`${IMAGE_BASE_URL}${personData.profile_path}`}
                   alt={`${personData.name}'s profile`}
                 />
               ) : (
                 <p>No image available</p>
               )}
+              <div>
+                <h1>{personData.name}</h1>
+                <p>Popularity: {personData.popularity}</p>
+
+                <p>
+                  {personData.known_for_department === "Acting"
+                    ? personData.gender === 1
+                      ? "Actress"
+                      : "Actor"
+                    : ""}
+                </p>
+              </div>
             </div>
-            <div>
-              <h1>{personData.name}</h1>
-              <p>Popularity: {personData.popularity}</p>
-            </div>
-            <div>
-              <h2>Known For:</h2>
-              <ul>
+            <div className="flex flex-col">
+              <div>
+                <h2>Known For:</h2>
+              </div>
+              <div className="mt-2 flex flex-row overflow-y-hidden gap-3">
                 {personMovies.map((movie) => (
-                  <li key={movie.id}>
-                    <p>{movie.title || movie.name}</p>
-                  </li>
+                  <PersonMovieItems
+                    key={movie.id}
+                    movie={movie}
+                    setMovieId={setMovieId}
+                    setShowCasts={setShowCasts}
+                  />
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         ) : (
-          <p>No person data found</p>
+          ""
         )
       ) : (
-        <p>Please search for a person.</p>
+        ""
       )}
     </div>
   );

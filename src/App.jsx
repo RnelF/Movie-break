@@ -73,7 +73,11 @@ function App() {
         genreName={genreName}
         actorMoviesData={actorMoviesData}
       />
-      <PersonDetailsComponent personDetails={personDetails} />
+      <PersonDetailsComponent
+        personDetails={personDetails}
+        setShowCasts={setShowCasts}
+        setMovieId={setMovieId}
+      />
       <div ref={movieDetailsRef}>
         {movieId && (
           <MovieDetails
