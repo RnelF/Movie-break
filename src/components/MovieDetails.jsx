@@ -9,6 +9,7 @@ export default function MovieDetails({
   showCasts,
   setShowCasts,
   setMovieId,
+  setPersonDetails,
 }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -229,6 +230,7 @@ export default function MovieDetails({
             movieId={movieId}
             showCasts={showCasts}
             setShowCasts={setShowCasts}
+            setPersonDetails={setPersonDetails}
           />
         </div>
         <div>

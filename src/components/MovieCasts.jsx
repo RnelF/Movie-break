@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 
-export default function MovieCasts({ movieId, showCasts, setShowCasts }) {
+export default function MovieCasts({
+  movieId,
+  showCasts,
+  setShowCasts,
+  setPersonDetails,
+}) {
   const [castData, setCastData] = useState({ cast: [] });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -44,7 +49,16 @@ export default function MovieCasts({ movieId, showCasts, setShowCasts }) {
                 </div>
                 {/* Name Container */}
                 <p className="mt-2 text-white text-center ml-2 text-xs 615:text-lg lg:text-sm">
-                  {cast.name} / {cast.character}
+                  <span
+                    className="hover:underline hover:cursor-pointer"
+                    onClick={() => {
+                      setPersonDetails(cast.name);
+                      console.log(`clicked on ${cast.name}`);
+                    }}
+                  >
+                    {cast.name}
+                  </span>
+                  / {cast.character}
                 </p>
               </div>
             ))}
