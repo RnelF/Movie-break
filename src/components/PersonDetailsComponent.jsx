@@ -43,48 +43,50 @@ export default function PersonDetailsComponent({
   }, [personDetails]);
 
   return (
-    <div className="mx-auto flex justify-center bg-gradient-to-b from-burgundy-900 via-red-900 to-dark-end">
+    <div>
       {personDetails ? (
         isLoading ? (
           <p>Loading . . . </p>
         ) : personData ? (
-          <div key={personData.id} className="flex flex-col gap-2 mx-auto">
-            <div className="w-60 mx-auto">
-              {personData.profile_path ? (
-                <img
-                  className="w-full rounded-lg"
-                  src={`${IMAGE_BASE_URL}${personData.profile_path}`}
-                  alt={`${personData.name}'s profile`}
-                />
-              ) : (
-                <p>No image available</p>
-              )}
-              <div>
-                <h1>{personData.name}</h1>
-                <p>Popularity: {personData.popularity}</p>
-
-                <p>
-                  {personData.known_for_department === "Acting"
-                    ? personData.gender === 1
-                      ? "Actress"
-                      : "Actor"
-                    : ""}
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <div>
-                <h2>Known For:</h2>
-              </div>
-              <div className="mt-2 flex flex-row overflow-y-hidden gap-3">
-                {personMovies.map((movie) => (
-                  <PersonMovieItems
-                    key={movie.id}
-                    movie={movie}
-                    setMovieId={setMovieId}
-                    setShowCasts={setShowCasts}
+          <div className="pt-3 mx-auto shadow-xl rounded-lg flex justify-center  bg-gradient-to-b from-burgundy-900 via-red-900 to-dark-end">
+            <div key={personData.id} className="flex flex-col gap-2 mx-auto">
+              <div className="w-44 mx-auto">
+                {personData.profile_path ? (
+                  <img
+                    className="w-full rounded-lg"
+                    src={`${IMAGE_BASE_URL}${personData.profile_path}`}
+                    alt={`${personData.name}'s profile`}
                   />
-                ))}
+                ) : (
+                  <p>No image available</p>
+                )}
+                <div>
+                  <h1>{personData.name}</h1>
+                  <p>Popularity: {personData.popularity}</p>
+
+                  <p>
+                    {personData.known_for_department === "Acting"
+                      ? personData.gender === 1
+                        ? "Actress"
+                        : "Actor"
+                      : ""}
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <div>
+                  <h2>Known For:</h2>
+                </div>
+                <div className="mt-2 flex flex-row overflow-y-hidden gap-3">
+                  {personMovies.map((movie) => (
+                    <PersonMovieItems
+                      key={movie.id}
+                      movie={movie}
+                      setMovieId={setMovieId}
+                      setShowCasts={setShowCasts}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>

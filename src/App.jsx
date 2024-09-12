@@ -29,12 +29,22 @@ function App() {
   const [personDetails, setPersonDetails] = useState([]);
 
   const movieDetailsRef = useRef(null);
+  const personDetailsRef = useRef(null);
 
   const handleViewMovie = (id) => {
     setMovieId(id); // Update movieId
     setTimeout(() => {
       if (movieDetailsRef.current) {
         movieDetailsRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 0);
+  };
+
+  const handleViewPerson = (name) => {
+    setPersonDetails(name); // Update movieId
+    setTimeout(() => {
+      if (personDetailsRef.current) {
+        personDetailsRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }, 0);
   };
@@ -73,11 +83,16 @@ function App() {
         genreName={genreName}
         actorMoviesData={actorMoviesData}
       />
-      <PersonDetailsComponent
-        personDetails={personDetails}
-        setShowCasts={setShowCasts}
-        setMovieId={setMovieId}
-      />
+      <div ref={personDetailsRef}>
+        {personDetails && (
+          <PersonDetailsComponent
+            personDetails={personDetails}
+            setShowCasts={setShowCasts}
+            setMovieId={setMovieId}
+          />
+        )}
+      </div>
+
       <div ref={movieDetailsRef}>
         {movieId && (
           <MovieDetails
@@ -85,7 +100,7 @@ function App() {
             showCasts={showCasts}
             setShowCasts={setShowCasts}
             setMovieId={handleViewMovie}
-            setPersonDetails={setPersonDetails}
+            setPersonDetails={handleViewPerson}
             personDetails={personDetails}
           />
         )}
