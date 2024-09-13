@@ -46,7 +46,7 @@ function App() {
       if (personDetailsRef.current) {
         personDetailsRef.current.scrollIntoView({ behavior: "smooth" });
       }
-    }, 0);
+    }, 1000);
   };
   return (
     <>
@@ -88,7 +88,7 @@ function App() {
           <PersonDetailsComponent
             personDetails={personDetails}
             setShowCasts={setShowCasts}
-            setMovieId={setMovieId}
+            setMovieId={handleViewMovie}
           />
         )}
       </div>

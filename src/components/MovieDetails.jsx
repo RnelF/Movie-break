@@ -51,19 +51,25 @@ export default function MovieDetails({
     }
   }
 
-  async function fetchMovieTrailers() {
-    try {
-      const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}`
-      );
-      const data = await res.json();
-      if (data.results.length > 0) {
-        setMovieTrailer(data.results[0].key); // Get the first trailer key
+  useEffect(() => {
+    async function fetchMovieTrailers() {
+      try {
+        setMovieTrailer("");
+        const res = await fetch(
+          `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}`
+        );
+        const data = await res.json();
+        if (data.results.length > 0) {
+          setMovieTrailer(data.results[0].key); // Get the first trailer key
+        } else {
+          setMovieTrailer("");
+        }
+      } catch (error) {
+        console.error("Error fetching movie trailers:", error);
       }
-    } catch (error) {
-      console.error("Error fetching movie trailers:", error);
     }
-  }
+    fetchMovieTrailers();
+  }, [movieId]);
 
   useEffect(() => {
     async function fetchMovie() {
@@ -78,7 +84,7 @@ export default function MovieDetails({
       }
     }
     fetchRecommendedMovie();
-    fetchMovieTrailers();
+
     fetchMovie();
   }, [movieId]);
 
@@ -86,7 +92,7 @@ export default function MovieDetails({
     height: "100%",
     width: "100%",
     playerVars: {
-      autoplay: 1,
+      autoplay: 0,
     },
   };
   return (
@@ -184,6 +190,7 @@ export default function MovieDetails({
             <YouTube
               videoId={movieTrailer}
               opts={opts}
+              key={movieTrailer}
               className="absolute top-0 left-0 w-full h-full rounded-md"
             />
           </div>
@@ -232,7 +239,6 @@ export default function MovieDetails({
             setShowCasts={setShowCasts}
             setPersonDetails={setPersonDetails}
             setMovieId={setMovieId}
-            setShowCasts={setShowCasts}
           />
         </div>
         <div>
