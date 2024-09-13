@@ -10,7 +10,7 @@ export default function RecommendedMovieItem({
   const [showTooltip, setShowTooltip] = useState(false);
   return (
     <div
-      className="relative w-24 500:w-40 bg-black bg-opacity-60 rounded-lg mb-2"
+      className="relative w-24 500:w-40 bg-black bg-opacity-60 rounded-lg mb-2 text-gray-200"
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
     >
@@ -64,10 +64,10 @@ export default function RecommendedMovieItem({
             </div>
 
             <div
-              className="text-sm text-wrap"
+              className="text-sm text-wrap "
               style={{
                 textShadow: `
-                    1px 2px 2px rgba(0, 0, 0, 1),  /* Dark shadow to ensure readability */
+                    1px 2px 2px rgba(0, 0, 0, 1),
                     2px 2px 4px rgba(0, 0, 0, 1)`,
               }}
             >

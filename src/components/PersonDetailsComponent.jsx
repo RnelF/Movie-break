@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PersonMovieItems from "./PersonMovieItems";
+import PopularityIcon from "../icons/movie-popularity.png";
 
 export default function PersonDetailsComponent({
   personDetails,
@@ -68,9 +69,19 @@ export default function PersonDetailsComponent({
         isLoading ? (
           <p>Loading . . . </p>
         ) : personData ? (
-          <div className="pt-3 mx-auto shadow-xl rounded-lg flex justify-center  bg-gradient-to-b from-burgundy-900 via-red-900 to-dark-end">
-            <div key={personData.id} className="flex flex-col gap-2 mx-auto">
-              <div className="w-44 mx-auto">
+          <div
+            className="text-gray-200 h-auto pt-3 mx-auto shadow-xl rounded-lg flex justify-center  bg-gradient-to-b from-burgundy-900 via-red-900 to-dark-end"
+            style={{
+              textShadow: `
+                    1px 2px 2px rgba(0, 0, 0, 1),
+                    2px 2px 4px rgba(0, 0, 0, 1)`,
+            }}
+          >
+            <div
+              key={personData.id}
+              className="flex flex-col gap-2 mx-auto justify-center"
+            >
+              <div className="w-36 mx-auto">
                 {personData.profile_path ? (
                   <img
                     className="w-full rounded-lg"
@@ -80,10 +91,11 @@ export default function PersonDetailsComponent({
                 ) : (
                   <p>No image available</p>
                 )}
-                <div>
-                  <h1>{personData.name}</h1>
-                  <p>Popularity: {personData.popularity}</p>
+              </div>
 
+              <div className="justify-center flex gap-2 mx-3">
+                <div>
+                  <h1 className="text-nowrap ">{personData.name}</h1>
                   <p>
                     {personData.known_for_department === "Acting"
                       ? personData.gender === 1
@@ -91,9 +103,21 @@ export default function PersonDetailsComponent({
                         : "Actor"
                       : ""}
                   </p>
+                  <div className="flex gap-1 justify-start items-center">
+                    {/*for popularity logo and value*/}
+                    <div>
+                      <img className="w-4" src={PopularityIcon} />
+                    </div>
+                    <div>{personData.popularity}</div>
+                  </div>
+                  <div>
+                    <p className="text-xs text-wrap">
+                      {personMoreData.biography}
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col mx-auto">
                 <div>
                   <h2>Known For:</h2>
                 </div>
