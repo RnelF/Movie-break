@@ -7,12 +7,15 @@ export default function PersonDetailsComponent({
   setShowCasts,
 }) {
   const URL = "https://api.themoviedb.org/3/search/person";
+  const personId_URL = `https://api.themoviedb.org/3/person/`;
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
   const [personData, setPersonData] = useState(null);
   const [personMovies, setPersonMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [personId, setPersonId] = useState(""); //get person Id to fetch more details
+  const [personMoreData, setPersonMoreData] = useState([]);
 
   useEffect(() => {
     async function fetchPersonDetails() {
@@ -28,7 +31,8 @@ export default function PersonDetailsComponent({
         if (data.results && data.results.length > 0) {
           const person = data.results[0];
           setPersonData(person);
-          setPersonMovies(person.known_for || []);
+          setPersonMovies(person.known_for);
+          setPersonId(person.id);
         } else {
           setPersonData(null);
           setPersonMovies([]);
@@ -41,6 +45,22 @@ export default function PersonDetailsComponent({
     }
     fetchPersonDetails();
   }, [personDetails]);
+
+  useEffect(() => {
+    async function fetchMorePersonDetails() {
+      try {
+        const res = await fetch(
+          `${personId_URL}${personId}?api_key=${API_KEY}`
+        );
+        const data = await res.json();
+        setPersonMoreData(data);
+        console.log(data);
+      } catch (error) {
+        console.error("Error fetching more Person Data", error);
+      }
+    }
+    fetchMorePersonDetails();
+  }, [personId]);
 
   return (
     <div>

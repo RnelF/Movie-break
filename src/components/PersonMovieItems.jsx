@@ -44,14 +44,18 @@ export default function PersonMovieItems({ movie, setMovieId, setShowCasts }) {
             </div>
 
             <div
-              className="text-base"
+              className="text-xs"
               style={{
                 textShadow: `
                     1px 2px 2px rgba(0, 0, 0, 1),  /* Dark shadow to ensure readability */
                     2px 2px 4px rgba(0, 0, 0, 1)`,
               }}
             >
-              <h1>{movie.original_title}</h1>
+              <h1>
+                {movie.original_title.length > 15
+                  ? `${movie.original_title.slice(0, 15)}...`
+                  : movie.original_title}
+              </h1>
             </div>
             <div>
               <button
