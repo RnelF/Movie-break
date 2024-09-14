@@ -48,6 +48,7 @@ export default function PopularMoviesList({
             key={movie.id}
             movie={movie}
             setMovieId={setMovieId}
+            setShowCasts={setShowCasts}
           />
         ))}
       </div>
@@ -56,7 +57,6 @@ export default function PopularMoviesList({
           <PopularMoviesPagination
             onPageChange={handlePageChange}
             setPopularMovieData={setPopularMovieData}
-            setShowCasts={setShowCasts}
           />
         )}
       </div>

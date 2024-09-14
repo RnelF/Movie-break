@@ -3,6 +3,7 @@ import YouTube from "react-youtube";
 import MovieCasts from "./MovieCasts";
 import MovieStaffs from "./MovieStaffs";
 import RecommendedMovieList from "./RecommendedMovieList";
+import MovieReviews from "./MovieReviews";
 
 export default function MovieDetails({
   movieId,
@@ -240,6 +241,9 @@ export default function MovieDetails({
             setPersonDetails={setPersonDetails}
             setMovieId={setMovieId}
           />
+        </div>
+        <div>
+          <MovieReviews movieId={movieId} />
         </div>
         <div>
           <RecommendedMovieList

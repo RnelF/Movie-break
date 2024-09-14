@@ -30,6 +30,15 @@ export default function MovieCasts({
 
   return (
     <div className="bg-gradient-to-b from-dark-start via-dark-middle to-dark-end rounded-lg p-4">
+      {/* Toggle button */}
+      {fullCast.length > 3 && (
+        <button
+          onClick={() => setShowCasts(!showCasts)}
+          className="bg-blue-500 text-white p-2 rounded mt-4"
+        >
+          {showCasts ? "Hide Cast" : "View All Cast"}
+        </button>
+      )}
       <div>
         {isLoading ? (
           <p>Loading . . .</p>
@@ -65,15 +74,6 @@ export default function MovieCasts({
           </div>
         )}
       </div>
-      {/* Toggle button */}
-      {fullCast.length > 3 && (
-        <button
-          onClick={() => setShowCasts(!showCasts)}
-          className="bg-blue-500 text-white p-2 rounded mt-4"
-        >
-          {showCasts ? "Hide Cast" : "View All Cast"}
-        </button>
-      )}
     </div>
   );
 }
