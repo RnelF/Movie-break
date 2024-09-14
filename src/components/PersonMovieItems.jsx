@@ -9,7 +9,7 @@ export default function PersonMovieItems({ movie, setMovieId, setShowCasts }) {
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
     >
-      <div className="w-24 500:w-32 h-auto ">
+      <div className="w-24 500:w-32 h-auto">
         <img
           className="relative w-full rounded-lg cursor-pointer"
           src={`${IMAGE_BASE_URL}${movie.poster_path}`}

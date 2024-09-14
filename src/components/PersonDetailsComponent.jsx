@@ -64,13 +64,13 @@ export default function PersonDetailsComponent({
   }, [personId]);
 
   return (
-    <div>
+    <div className="lg:w-3/4 mx-auto">
       {personDetails ? (
         isLoading ? (
           <p>Loading . . . </p>
         ) : personData ? (
           <div
-            className="text-gray-200 h-auto pt-3 mx-auto shadow-xl rounded-lg flex justify-center  bg-gradient-to-b from-burgundy-900 via-red-900 to-dark-end"
+            className="text-gray-200 h-auto pt-3 mx-auto shadow-xl rounded-lg flex flex-col lg:px-16 justify-center bg-gradient-to-b from-burgundy-900 via-red-900 to-dark-end"
             style={{
               textShadow: `
                     1px 2px 2px rgba(0, 0, 0, 1),
@@ -79,9 +79,9 @@ export default function PersonDetailsComponent({
           >
             <div
               key={personData.id}
-              className="flex flex-col gap-2 mx-auto justify-center"
+              className="flex flex-col gap-2 mx-auto lg:flex-row justify-center items-center"
             >
-              <div className="w-36 mx-auto">
+              <div className="w-36 h-auto lg:w-52 mx-auto flex-shrink-0">
                 {personData.profile_path ? (
                   <img
                     className="w-full rounded-lg"
@@ -93,7 +93,7 @@ export default function PersonDetailsComponent({
                 )}
               </div>
 
-              <div className="justify-center flex gap-2 mx-3">
+              <div className="justify-center items-center flex gap-2 mx-3 w-auto">
                 <div>
                   <h1 className="text-nowrap ">{personData.name}</h1>
                   <p>
@@ -110,27 +110,27 @@ export default function PersonDetailsComponent({
                     </div>
                     <div>{personData.popularity}</div>
                   </div>
-                  <div>
+                  <div className="lg:w-3/4">
                     <p className="text-xs text-wrap">
                       {personMoreData.biography}
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col mx-auto">
-                <div>
-                  <h2>Known For:</h2>
-                </div>
-                <div className="mt-2 flex flex-row overflow-y-hidden gap-3">
-                  {personMovies.map((movie) => (
-                    <PersonMovieItems
-                      key={movie.id}
-                      movie={movie}
-                      setMovieId={setMovieId}
-                      setShowCasts={setShowCasts}
-                    />
-                  ))}
-                </div>
+            </div>
+            <div className="flex flex-col mx-auto">
+              <div>
+                <h2>Known For:</h2>
+              </div>
+              <div className="mt-2 flex flex-row overflow-y-hidden gap-3">
+                {personMovies.map((movie) => (
+                  <PersonMovieItems
+                    key={movie.id}
+                    movie={movie}
+                    setMovieId={setMovieId}
+                    setShowCasts={setShowCasts}
+                  />
+                ))}
               </div>
             </div>
           </div>
