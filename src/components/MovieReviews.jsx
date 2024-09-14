@@ -50,24 +50,29 @@ export default function MovieReviews({ movieId }) {
         {isLoading ? (
           <p>Loading....</p>
         ) : (
-          <div>
+          <div className="lg:w-auto lg:grid grid-cols-2 gap-5">
             {allReviews.length > 0 ? (
               (showAllReviews ? allReviews : initialReviews).map((review) => (
-                <div key={review.id} className="mt-3">
+                <div
+                  key={review.id}
+                  className="mt-3 615:mt-5 border border-gray-300 p-4 rounded-md"
+                >
                   <div>
                     <div className="flex gap-1 items-end">
                       <div>
-                        <img className="w-10" src={DefaultAvatar} />
+                        <img className="w-10 615:w-12" src={DefaultAvatar} />
                       </div>
                       <div>
-                        <p className="text-base">Username: {review.author}</p>
+                        <p className="text-base 615:text-lg">
+                          Username: {review.author}
+                        </p>
                       </div>
                     </div>
 
                     <p>{review.created_at}</p>
                   </div>
                   <div>
-                    <p className="text-wrap text-sm">
+                    <p className="text-wrap text-sm 615:text-md">
                       {expandedReviews[review.id]
                         ? review.content // Show full content
                         : `${review.content.slice(0, 200)}...`}{" "}

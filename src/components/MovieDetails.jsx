@@ -224,7 +224,7 @@ export default function MovieDetails({
           )}
         </div>
 
-        <div className="text-wrap mt-6 text-left text-xs w-11/12 615:text-lg p-3">
+        <div className="text-wrap text-left text-xs w-11/12 615:text-lg p-3">
           <p className="font-bold text-lg 615:text-2xl">Overview</p>
           <p>{movie.overview}</p>
         </div>
