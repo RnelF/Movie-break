@@ -52,9 +52,9 @@ export default function PersonMovieItems({ movie, setMovieId, setShowCasts }) {
               }}
             >
               <h1>
-                {movie.original_title.length > 15
+                {movie?.original_title?.length > 30
                   ? `${movie.original_title.slice(0, 15)}...`
-                  : movie.original_title}
+                  : movie?.original_title}
               </h1>
             </div>
             <div>
