@@ -14,6 +14,7 @@ export default function MovieList({
   setShowCasts,
   genreName,
   actorMoviesData,
+  setPersonDetails,
 }) {
   const listTopRef = useRef(null);
 
@@ -51,6 +52,7 @@ export default function MovieList({
             key={movie.id}
             movie={movie}
             setShowCasts={setShowCasts}
+            setPersonDetails={setPersonDetails}
           />
         ))}
       </div>

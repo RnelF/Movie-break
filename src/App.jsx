@@ -82,11 +82,13 @@ function App() {
         setShowCasts={setShowCasts}
         genreName={genreName}
         actorMoviesData={actorMoviesData}
+        setPersonDetails={setPersonDetails}
       />
       <div ref={personDetailsRef}>
         {personDetails && (
           <PersonDetailsComponent
             personDetails={personDetails}
+            setPersonDetails={setPersonDetails}
             setShowCasts={setShowCasts}
             setMovieId={handleViewMovie}
           />
@@ -111,12 +113,14 @@ function App() {
         trendingMovieData={trendingMovieData}
         setMovieId={handleViewMovie}
         setShowCasts={setShowCasts}
+        setPersonDetails={setPersonDetails}
       />
       <PopularFilMoviesNowList
         setfilMoviesData={setfilMoviesData}
         filMoviesData={filMoviesData}
         setMovieId={handleViewMovie}
         setShowCasts={setShowCasts}
+        setPersonDetails={setPersonDetails}
       />
 
       <PopularMoviesList
@@ -124,12 +128,14 @@ function App() {
         setPopularMovieData={setPopularMovieData}
         popularMovieData={popularMovieData}
         setShowCasts={setShowCasts}
+        setPersonDetails={setPersonDetails}
       />
       <HighestRatedMoviesList
         setHighRatedMovieData={setHighRatedMovieData}
         highRatedMovieData={highRatedMovieData}
         setMovieId={handleViewMovie}
         setShowCasts={setShowCasts}
+        setPersonDetails={setPersonDetails}
       />
     </>
   );

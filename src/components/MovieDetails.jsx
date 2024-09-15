@@ -250,6 +250,7 @@ export default function MovieDetails({
             recommendedMovieData={recommendedMovieData}
             setMovieId={setMovieId}
             setShowCasts={setShowCasts}
+            setPersonDetails={setPersonDetails}
           />
         </div>
       </div>

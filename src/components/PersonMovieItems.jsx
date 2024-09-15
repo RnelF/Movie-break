@@ -1,6 +1,12 @@
 import { useState } from "react";
 import moviePopularityIcon from "../icons/movie-popularity.png";
-export default function PersonMovieItems({ movie, setMovieId, setShowCasts }) {
+import movieRatingIcon from "../icons/movie-rating.png";
+export default function PersonMovieItems({
+  movie,
+  setMovieId,
+  setShowCasts,
+  setPersonDetails,
+}) {
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
   const [showTooltip, setShowTooltip] = useState(false);
   return (
@@ -41,6 +47,20 @@ export default function PersonMovieItems({ movie, setMovieId, setShowCasts }) {
                   {parseInt(movie.popularity).toLocaleString()}
                 </div>
               </div>
+              <div className="text-xs flex gap-1 justify-center">
+                <div>
+                  <img className="w-4" src={movieRatingIcon} />
+                </div>
+                <div
+                  style={{
+                    textShadow: `
+                    1px 2px 2px rgba(0, 0, 0, 1),  /* Dark shadow to ensure readability */
+                    2px 2px 4px rgba(0, 0, 0, 1)`,
+                  }}
+                >
+                  {parseInt(movie.vote_average).toFixed(1)}
+                </div>
+              </div>
             </div>
 
             <div
@@ -64,6 +84,7 @@ export default function PersonMovieItems({ movie, setMovieId, setShowCasts }) {
                   e.stopPropagation();
                   setMovieId(movie.id);
                   setShowCasts(false);
+                  setPersonDetails("");
                 }}
               >
                 View

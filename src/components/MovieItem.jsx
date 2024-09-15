@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import MovieRatingIcon from "../icons/movie-rating.png";
 import ThumbsUpIcon from "../icons/thumbs-up.png";
-export default function MovieItem({ movie, setMovieId, setShowCasts }) {
+export default function MovieItem({
+  movie,
+  setMovieId,
+  setShowCasts,
+  setPersonDetails,
+}) {
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
   const [showTooltip, setShowTooltip] = useState(false);
   return (
@@ -80,6 +85,7 @@ export default function MovieItem({ movie, setMovieId, setShowCasts }) {
                   e.stopPropagation();
                   setMovieId(movie.id);
                   setShowCasts(false);
+                  setPersonDetails("");
                 }}
               >
                 View

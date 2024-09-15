@@ -11,6 +11,7 @@ export default function PopularFilMoviesNowList({
   filMoviesData,
   setMovieId,
   setShowCasts,
+  setPersonDetails,
 }) {
   const listTopRef = useRef(null);
 
@@ -54,6 +55,7 @@ export default function PopularFilMoviesNowList({
             movie={movie}
             setMovieId={setMovieId}
             setShowCasts={setShowCasts}
+            setPersonDetails={setPersonDetails}
           />
         ))}
       </div>

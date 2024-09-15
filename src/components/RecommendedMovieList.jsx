@@ -3,6 +3,7 @@ export default function RecommendedMovieList({
   recommendedMovieData,
   setMovieId,
   setShowCasts,
+  setPersonDetails,
 }) {
   return (
     <div className="pb-4 mx-4 615:mx-8 lg:mx-12 relative rounded-lg">
@@ -18,6 +19,7 @@ export default function RecommendedMovieList({
               key={movie.id}
               movie={movie}
               setShowCasts={setShowCasts}
+              setPersonDetails={setPersonDetails}
             />
           ))
         ) : (

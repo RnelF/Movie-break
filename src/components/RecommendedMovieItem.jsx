@@ -5,6 +5,7 @@ export default function RecommendedMovieItem({
   movie,
   setMovieId,
   setShowCasts,
+  setPersonDetails,
 }) {
   const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
   const [showTooltip, setShowTooltip] = useState(false);
@@ -84,6 +85,7 @@ export default function RecommendedMovieItem({
                   e.stopPropagation();
                   setMovieId(movie.id);
                   setShowCasts(false);
+                  setPersonDetails("");
                 }}
               >
                 View

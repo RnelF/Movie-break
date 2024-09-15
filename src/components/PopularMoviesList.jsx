@@ -11,6 +11,7 @@ export default function PopularMoviesList({
   popularMovieData,
   setPopularMovieData,
   setShowCasts,
+  setPersonDetails,
 }) {
   const listTopRef = useRef(null);
 
@@ -49,6 +50,7 @@ export default function PopularMoviesList({
             movie={movie}
             setMovieId={setMovieId}
             setShowCasts={setShowCasts}
+            setPersonDetails={setPersonDetails}
           />
         ))}
       </div>

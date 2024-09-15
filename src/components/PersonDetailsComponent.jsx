@@ -4,6 +4,7 @@ import PopularityIcon from "../icons/movie-popularity.png";
 
 export default function PersonDetailsComponent({
   personDetails,
+  setPersonDetails,
   setMovieId,
   setShowCasts,
 }) {
@@ -65,9 +66,9 @@ export default function PersonDetailsComponent({
 
   return (
     <div className="lg:w-3/4 mx-auto">
-      {personDetails ? (
+      {personDetails !== "" ? (
         isLoading ? (
-          <p>Loading . . . </p>
+          <div></div>
         ) : personData ? (
           <div
             className="text-gray-200 h-auto pt-3 mx-auto shadow-xl rounded-lg flex flex-col lg:px-16 justify-center bg-gradient-to-b from-burgundy-900 via-red-900 to-dark-end"
@@ -129,6 +130,7 @@ export default function PersonDetailsComponent({
                     movie={movie}
                     setMovieId={setMovieId}
                     setShowCasts={setShowCasts}
+                    setPersonDetails={setPersonDetails}
                   />
                 ))}
               </div>
