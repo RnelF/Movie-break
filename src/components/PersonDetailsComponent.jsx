@@ -68,7 +68,7 @@ export default function PersonDetailsComponent({
     <div className="lg:w-3/4 mx-auto">
       {personDetails !== "" ? (
         isLoading ? (
-          <div></div>
+          <div>Loading ...</div>
         ) : personData ? (
           <div
             className="text-gray-200 h-auto pt-3 mx-auto shadow-xl rounded-lg flex flex-col lg:px-16 justify-center bg-gradient-to-b from-burgundy-900 via-red-900 to-dark-end"
@@ -94,9 +94,11 @@ export default function PersonDetailsComponent({
                 )}
               </div>
 
-              <div className="justify-center items-center flex gap-2 mx-3 w-auto">
+              <div className="justify-center items-start flex flex-col gap-2 mx-3 w-auto">
                 <div>
                   <h1 className="text-nowrap ">{personData.name}</h1>
+                </div>
+                <div>
                   <p>
                     {personData.known_for_department === "Acting"
                       ? personData.gender === 1
@@ -104,18 +106,19 @@ export default function PersonDetailsComponent({
                         : "Actor"
                       : ""}
                   </p>
-                  <div className="flex gap-1 justify-start items-center">
-                    {/*for popularity logo and value*/}
-                    <div>
-                      <img className="w-4" src={PopularityIcon} />
-                    </div>
-                    <div>{personData.popularity}</div>
+                </div>
+
+                <div className="flex gap-1 justify-start items-center">
+                  {/*for popularity logo and value*/}
+                  <div>
+                    <img className="w-4" src={PopularityIcon} />
                   </div>
-                  <div className="lg:w-3/4">
-                    <p className="text-xs text-wrap">
-                      {personMoreData.biography}
-                    </p>
-                  </div>
+                  <div>{personData.popularity}</div>
+                </div>
+                <div className="lg:w-3/4">
+                  <p className="text-xs text-wrap">
+                    {personMoreData.biography}
+                  </p>
                 </div>
               </div>
             </div>
