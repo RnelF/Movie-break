@@ -71,7 +71,7 @@ export default function PersonDetailsComponent({
           <div>Loading ...</div>
         ) : personData ? (
           <div
-            className="text-gray-200 h-auto pt-3 mx-auto shadow-xl rounded-lg flex flex-col lg:px-16 justify-center bg-gradient-to-b from-burgundy-900 via-red-900 to-dark-end"
+            className="text-gray-200 h-auto pt-3 mx-auto shadow-xl rounded-lg flex flex-col lg:px-16 justify-center items-center bg-gradient-to-b from-burgundy-900 via-red-900 to-dark-end"
             style={{
               textShadow: `
                     1px 2px 2px rgba(0, 0, 0, 1),
@@ -94,29 +94,35 @@ export default function PersonDetailsComponent({
                 )}
               </div>
 
-              <div className="justify-center items-start flex flex-col gap-2 mx-3 w-auto">
+              <div className="justify-center items-center lg:items-start flex flex-col gap-2 mx-4 w-auto">
                 <div>
-                  <h1 className="text-nowrap ">{personData.name}</h1>
-                </div>
-                <div>
-                  <p>
-                    {personData.known_for_department === "Acting"
-                      ? personData.gender === 1
-                        ? "Actress"
-                        : "Actor"
-                      : ""}
-                  </p>
-                </div>
-
-                <div className="flex gap-1 justify-start items-center">
-                  {/*for popularity logo and value*/}
                   <div>
-                    <img className="w-4" src={PopularityIcon} />
+                    <h1 className="text-nowrap text-base lg:text-2xl">
+                      {personData.name}
+                    </h1>
                   </div>
-                  <div>{personData.popularity}</div>
+                  <div>
+                    <p className="text-sm lg:text-lg">
+                      {personData.known_for_department === "Acting"
+                        ? personData.gender === 1
+                          ? "Actress"
+                          : "Actor"
+                        : ""}
+                    </p>
+                  </div>
+
+                  <div className="flex gap-1 justify-start items-center">
+                    {/*for popularity logo and value*/}
+                    <div>
+                      <img className="w-4 lg:w-5" src={PopularityIcon} />
+                    </div>
+                    <div className="text-sm lg:text-lg">
+                      {personData.popularity}
+                    </div>
+                  </div>
                 </div>
-                <div className="lg:w-3/4">
-                  <p className="text-xs text-wrap">
+                <div>
+                  <p className="text-xs text-wrap text-justify">
                     {personMoreData.biography}
                   </p>
                 </div>
